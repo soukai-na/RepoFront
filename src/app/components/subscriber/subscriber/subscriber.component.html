@@ -1,0 +1,27 @@
+
+<div class="ui-g">
+<p-panel header="Gestion de subscribers" [style]="{'width':'70%'}">
+<div style="margin-bottom: 20px;">
+    <p-menubar [model]="items"></p-menubar>
+</div>
+    <p-table [value]="subscribers" [columns]="cols" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-subscriber let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns">
+                 {{subscriber[col.field]}}
+            </td>>
+        </tr>
+    </ng-template>
+</p-table>
+</p-panel>
+<p-dialog header="Nouveau subscriber" [(visible)]="displaySaveDialog" [modal]="true">
+    Content
+</p-dialog>
+</div>
