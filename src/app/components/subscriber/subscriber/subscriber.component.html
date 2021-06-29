@@ -1,27 +1,78 @@
-
 <div class="ui-g">
-<p-panel header="Gestion de subscribers" [style]="{'width':'70%'}">
-<div style="margin-bottom: 20px;">
-    <p-menubar [model]="items"></p-menubar>
-</div>
-    <p-table [value]="subscribers" [columns]="cols" [paginator]="true" [rows]="10">
-    <ng-template pTemplate="header" let-columns>
-        <tr>
-            <th *ngFor="let col of columns">
-                {{col.header}}
-            </th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-subscriber let-columns="columns">
-        <tr>
-            <td *ngFor="let col of columns">
-                 {{subscriber[col.field]}}
-            </td>>
-        </tr>
-    </ng-template>
-</p-table>
-</p-panel>
-<p-dialog header="Nouveau subscriber" [(visible)]="displaySaveDialog" [modal]="true">
-    Content
-</p-dialog>
+    <p-panel header="Gestion de subscribers" [style]="{'width':'70%'}">
+        <div style="margin-bottom: 20px;">
+            <p-menubar [model]="items"></p-menubar>
+        </div>
+        <p-table [value]="subscribers" [columns]="cols" [paginator]="true" [rows]="10">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-subscriber let-columns="columns">
+                <tr>
+                    <td *ngFor="let col of columns">
+                        {{subscriber[col.field]}}
+                    </td>>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p-panel>
+    <p-dialog header="Nouveau subscriber" [responsive]="true" [(visible)]="displaySaveDialog" [style]="{'width': '300px', 'background':'hsl(210deg 90% 75%)'}" [modal]="true"
+        styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="nom_sub">Nom</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <input pInputText id="nom_sub" [(ngModel)]="subscriber.nom_sub" required  />
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="prenom_sub">Prénom</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <input pInputText id="prenom_sub" [(ngModel)]="subscriber.prenom_sub" required  />
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="num_sim">Numéro SIM</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <input pInputText id="num_sim" [(ngModel)]="subscriber.num_sim" required  />
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="fonction">Fonction</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <input pInputText id="fonction" [(ngModel)]="subscriber.fonction" required />
+                    </div>
+                </div>
+            </div>
+
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveSubscriber()"></button>
+        </ng-template>
+
+    </p-dialog>
 </div>

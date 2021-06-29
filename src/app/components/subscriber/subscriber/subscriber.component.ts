@@ -13,7 +13,16 @@ export class SubscriberComponent implements OnInit {
   subscribers: Subscriber[] = [];
   cols: any[] = [];
   items: MenuItem[] = [];
-  displaySaveDialog:boolean = false;
+  displaySaveDialog: boolean = false;
+  subscriber: Subscriber={
+    id_sub:null,
+    nom_sub:'',
+    prenom_sub:'',
+    num_sim:null,
+    fonction:''
+  };
+
+
 
   constructor(private subscriberService: SubscriberService) { }
 
@@ -34,8 +43,20 @@ export class SubscriberComponent implements OnInit {
 
   }
   showSaveDialog() {
-    this.displaySaveDialog=true;
-   }
+    this.displaySaveDialog = true;
+  }
+
+  saveSubscriber() {
+    this.subscriberService.saveSubscriber(this.subscriber).subscribe(
+      (resultat: any) => {
+           console.log(resultat);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
   ngOnInit() {
     this.getAll();
     this.cols = [

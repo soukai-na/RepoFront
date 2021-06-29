@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { Observable} from 'rxjs';
+import { Subscriber } from '../model/subscriber';
 
 @Injectable({
   providedIn: 'root'
@@ -15,4 +16,9 @@ export class SubscriberService {
     return this.http.get(this.baseURL+ "/AllSubscribers");
 
   }
+  saveSubscriber(subscriber:Subscriber):Observable<any>{
+     return this.http.post(this.baseURL+"/Subscribers", JSON.stringify(subscriber));
+  }
+  
+  
 }

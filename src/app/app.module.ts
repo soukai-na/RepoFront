@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import {DialogModule} from 'primeng/dialog';
 import { MenuComponent } from './components/menu/menu.component';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import { HeaderComponent } from './components/header/header.component';
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { HeaderComponent } from './components/header/header.component';
     BrowserAnimationsModule,
     MenubarModule,
     DialogModule,
-    PanelMenuModule
+    PanelMenuModule,
+    FormsModule,
+    InputTextModule
     
   ],
   providers: [],

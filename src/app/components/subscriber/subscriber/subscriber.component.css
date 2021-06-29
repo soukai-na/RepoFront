@@ -1,0 +1,8 @@
+.p-panel .p-panel-header {
+    border: 1px solid #dee2e6;
+    padding: 1rem;
+    background: #86bff9;
+    color: #f8f9fa;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
