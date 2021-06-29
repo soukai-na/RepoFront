@@ -20,8 +20,8 @@
             </ng-template>
         </p-table>
     </p-panel>
-    <p-dialog header="Nouveau subscriber" [responsive]="true" [(visible)]="displaySaveDialog" [style]="{'width': '300px', 'background':'hsl(210deg 90% 75%)'}" [modal]="true"
-        styleClass="p-fluid">
+    <p-dialog header="Nouveau subscriber" [responsive]="true" [(visible)]="displaySaveDialog"
+        [style]="{'width': '300px', 'background':'hsl(210deg 90% 75%)'}" [modal]="true" styleClass="p-fluid">
 
         <ng-template pTemplate="content">
 
@@ -31,7 +31,7 @@
                         <label for="nom_sub">Nom</label>
                     </div>
                     <div class="ui-g-8">
-                        <input pInputText id="nom_sub" [(ngModel)]="subscriber.nom_sub" required  />
+                        <input pInputText id="nom_sub" [(ngModel)]="subscriber.nom_sub" required />
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                         <label for="prenom_sub">Prénom</label>
                     </div>
                     <div class="ui-g-8">
-                        <input pInputText id="prenom_sub" [(ngModel)]="subscriber.prenom_sub" required  />
+                        <input pInputText id="prenom_sub" [(ngModel)]="subscriber.prenom_sub" required />
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                         <label for="num_sim">Numéro SIM</label>
                     </div>
                     <div class="ui-g-8">
-                        <input pInputText id="num_sim" [(ngModel)]="subscriber.num_sim" required  />
+                        <input pInputText id="num_sim" [(ngModel)]="subscriber.num_sim" required />
                     </div>
                 </div>
             </div>
@@ -70,9 +70,10 @@
             </div>
 
         </ng-template>
-        <ng-template pTemplate="footer">
-            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveSubscriber()"></button>
-        </ng-template>
-
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" pButton icon="pi pi-check" (click)="saveSubscriber()" label="Ajouter"></button>
+            </div>
+        </p-footer>
     </p-dialog>
 </div>

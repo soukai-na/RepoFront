@@ -15,6 +15,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import { HeaderComponent } from './components/header/header.component';
 import {InputTextModule} from 'primeng/inputtext';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {InputTextModule} from 'primeng/inputtext';
     DialogModule,
     PanelMenuModule,
     FormsModule,
-    InputTextModule
+    InputTextModule,
+    ButtonModule
     
   ],
   providers: [],

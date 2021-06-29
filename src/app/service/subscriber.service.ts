@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { Observable} from 'rxjs';
 import { Subscriber } from '../model/subscriber';
 
@@ -9,16 +9,22 @@ import { Subscriber } from '../model/subscriber';
 export class SubscriberService {
 
 
-  baseURL:string="http://localhost:5000/api/v1";
+  baseURL:string="http://localhost:5000/";
   constructor(private http:HttpClient) { }
 
   getAll():Observable<any>{
-    return this.http.get(this.baseURL+ "/AllSubscribers");
+    return this.http.get(this.baseURL+ "AllSubscribers");
 
   }
   saveSubscriber(subscriber:Subscriber):Observable<any>{
-     return this.http.post(this.baseURL+"/Subscribers", JSON.stringify(subscriber));
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+     return this.http.post(this.baseURL+"Subscribers", JSON.stringify(subscriber), {headers: headers});
   }
+
+  AddSubscriber(){}
+  UpdateSubscriber(){}
+  DeleteSubscriber(){}
   
   
 }

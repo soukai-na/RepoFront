@@ -15,11 +15,11 @@ export class SubscriberComponent implements OnInit {
   items: MenuItem[] = [];
   displaySaveDialog: boolean = false;
   subscriber: Subscriber={
-    id_sub:null,
-    nom_sub:'',
-    prenom_sub:'',
-    num_sim:null,
-    fonction:''
+    id_sub:null as any,
+    nom_sub:null as any,
+    prenom_sub:null as any,
+    num_sim:null as any,
+    fonction:null as any
   };
 
 
@@ -49,7 +49,8 @@ export class SubscriberComponent implements OnInit {
   saveSubscriber() {
     this.subscriberService.saveSubscriber(this.subscriber).subscribe(
       (resultat: any) => {
-           console.log(resultat);
+           let subscriber = resultat as Subscriber;
+           this.subscribers.push(subscriber);
       },
       error => {
         console.log(error);
