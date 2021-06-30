@@ -9,38 +9,20 @@ import { SubscriberService } from 'src/app/service/subscriber.service';
   styleUrls: ['./subscriber.component.css']
 })
 export class SubscriberComponent implements OnInit {
+  constructor(private subscriberService: SubscriberService, private messageService: MessageService, private confirmService: ConfirmationService) { }
 
-  subscribers: Subscriber[] = [];
+  subscribers!: Subscriber[] ;
+  subscriber!: Subscriber;
   cols: any[] = [];
   items: MenuItem[] = [];
   displaySaveDialog: boolean = false;
-  subscriber: Subscriber = {
-    id_sub: null as any,
-    nom_sub: null as any,
-    prenom_sub: null as any,
-    num_sim: null as any,
-    fonction: null as any
-  };
-
-  selectedSubscriber: Subscriber = {
-    id_sub: null as any,
-    nom_sub: null as any,
-    prenom_sub: null as any,
-    num_sim: null as any,
-    fonction: null as any
-  }
-
-  constructor(private subscriberService: SubscriberService, private messageService: MessageService, private confirmService: ConfirmationService) { }
+  
 
   getAll() {
     this.subscriberService.getAll().subscribe(
+     
       (resultat: any) => {
-        let subscribers: Subscriber[] = [];
-        for (let i = 0; i < resultat.length; i++) {
-          let subscriber = resultat[i] as Subscriber;
-          this.subscribers.push(subscriber);
-        }
-        this.subscribers = subscribers;
+       this.subscribers = resultat;
       },
       error => {
         console.log(error);
@@ -50,8 +32,8 @@ export class SubscriberComponent implements OnInit {
   }
   showSaveDialog(edit: boolean) {
     if (edit) {
-      if (this.selectedSubscriber != null && this.selectedSubscriber.id_sub != null) {
-        this.subscriber = this.selectedSubscriber;
+      if (this.subscriber != null && this.subscriber.id_sub != null) {
+        this.subscriber= this.subscriber;
       } else {
         this.messageService.add({ severity: 'warn', summary: "Warning", detail: "séléctionnez un subscriebr s'il vous plait!" });
         return;
@@ -77,23 +59,26 @@ export class SubscriberComponent implements OnInit {
   }
 
 
-  deleteSubscriber() {
-    if (this.selectedSubscriber == null || this.selectedSubscriber.id_sub == null) {
+  deleteSubscribers() {
+    if (this.subscriber == null || this.subscriber.id_sub == null) {
       this.messageService.add({ severity: 'warn', summary: "Warning", detail: "séléctionnez un subscriebr s'il vous plait!" });
       return;
     }
     this.confirmService.confirm({
       message: "Est-ce que vous voulez supprimez ce subscriber?",
       accept: () => {
-        this.subscriberService.deleteSubscriber(this.selectedSubscriber.id_sub).subscribe(
+        this.subscriberService.deleteSubscribers(this.subscriber.id_sub).subscribe(
           (resultat: any) => {
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'subscriber ' + resultat.id_sub + ' supprimé' });
-
+            return this.subscriberService.getAll();
           }
         )
       }
     })
   }
+
+
+
 
   deleteObjet(id_sub: number) {
     let index = this.subscribers.findIndex((e) => e.id_sub == id_sub);
@@ -132,7 +117,7 @@ export class SubscriberComponent implements OnInit {
       {
         label: "Eleminer",
         icon: 'pi pi-fw pi-times',
-        command: () => this.deleteSubscriber()
+        command: () => this.deleteSubscribers()
       }
 
     ]

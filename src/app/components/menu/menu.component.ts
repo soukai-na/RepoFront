@@ -15,17 +15,17 @@ export class MenuComponent implements OnInit {
     constructor(
       private route: ActivatedRoute,
     ) {}
-
+ 
     
 
     ngOnInit() {
         this.items = [
-          {label: 'Dashboard', icon: 'pi pi-fw pi-th-large', id:'1' },
-          {label: 'Subscribers', icon: 'pi pi-fw pi-user' , routerLink:'AllSubscribers',id:'2'},
-          {label: 'Service', icon: 'pi pi-fw pi-pencil' , id:'3' },
-          {label: 'Factures', icon: 'pi pi-fw pi-file' , id:'4' },
-          {label: 'Abonnements', icon: 'pi pi-fw pi-list' , id:'5' },
-          {label: 'Matériels', icon: 'pi pi-fw pi-folder-open' , id:'6' }
+          {label: 'Dashboard', icon: 'pi pi-fw pi-th-large' },
+          {label: 'Subscribers', icon: 'pi pi-fw pi-user' , routerLink:['AllSubscribers']},
+          {label: 'Service', icon: 'pi pi-fw pi-pencil'  },
+          {label: 'Factures', icon: 'pi pi-fw pi-file'  },
+          {label: 'Abonnements', icon: 'pi pi-fw pi-list'  },
+          {label: 'Matériels', icon: 'pi pi-fw pi-folder-open'  }
         ];
     }
   }

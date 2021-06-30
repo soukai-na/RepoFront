@@ -5,3 +5,18 @@ body{
 .p-panelmenu-header-link{
     width: 297px;
 }
+.p-panel .p-panel-header{
+    background-color: #86bff9 !important; 
+    color: #f8f9fa !important;
+    font-size: 24px !important;
+}
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link .p-menuitem-icon {
+    color: #86bff9 !important;
+}
+.p-menubar {
+    
+    border: 1px solid #86bff9 !important;
+}
+.p-panel .p-panel-content {
+    border: 1px solid #86bff9 !important;
+}
