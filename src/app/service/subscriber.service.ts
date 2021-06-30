@@ -22,9 +22,9 @@ export class SubscriberService {
      return this.http.post(this.baseURL+"Subscribers", JSON.stringify(subscriber), {headers: headers});
   }
 
-  AddSubscriber(){}
-  UpdateSubscriber(){}
-  DeleteSubscriber(){}
+  deleteSubscriber(id_sub:number):Observable<any>{
+    return this.http.get(this.baseURL + "Subscribers/"+id_sub);
+  }
   
   
 }

@@ -16,6 +16,11 @@ import {PanelMenuModule} from 'primeng/panelmenu';
 import { HeaderComponent } from './components/header/header.component';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
+import {ToastModule} from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+
 
 @NgModule({
   declarations: [
@@ -34,12 +39,17 @@ import {ButtonModule} from 'primeng/button';
     MenubarModule,
     DialogModule,
     PanelMenuModule,
+    ToastModule,
     FormsModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    ConfirmDialogModule
     
   ],
-  providers: [],
+  providers: [
+    MessageService,
+    ConfirmationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
