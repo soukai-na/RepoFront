@@ -19,7 +19,7 @@
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-subscriber let-columns="columns">
-                <tr [pSelectableRow]="subscriber">
+                <tr [pSelectableRow]="subscriber" >
                     <td *ngFor="let col of columns">
                         {{subscriber[col.field]}}
                     </td>
@@ -38,7 +38,7 @@
                         <label for="nom_subscriber">Nom</label>
                     </div>
                     <div class="ui-g-8">
-                        <input pInputText id="nom_subscriber" [(ngModel)]="subscriber.nom_subscriber" required />
+                        <input pInputText id="nom_subscriber" [(ngModel)]="subscriber.nom_subscriber" required="true" />
                     </div>
                 </div>
             </div>
@@ -64,6 +64,21 @@
                 </div>
             </div>
 
+            
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="service">Service</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <p-dropdown [options]="services" [(ngModel)]="selectedService"  placeholder="Service" optionLabel="nom_service"[showClear]="true" [virtualScroll]="true" >
+                            {{selectedService ? selectedService.id_service : 'none'}}
+                        </p-dropdown>
+
+                    </div>
+                </div>
+            </div>
+
             <div class="ui-g ui-fluid">
                 <div class="ui-g-12">
                     <div class="ui-g-4">
@@ -75,19 +90,6 @@
                 </div>
             </div>
 
-            <div class="ui-g ui-fluid">
-                <div class="ui-g-12">
-                    <div class="ui-g-4">
-                        <label for="service">Service</label>
-                    </div>
-                    <div class="ui-g-8">
-
-                        <p-listbox [(ngModel)]="selectedService" optionLabel="nom_service" [style]="{'width':'15rem'}">
-                            <option *ngFor="let service of services" [value]="service">{{service.nom_service}}</option>
-                        </p-listbox>
-                    </div>
-                </div>
-            </div>
 
         </ng-template>
         <p-footer>

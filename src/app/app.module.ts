@@ -28,7 +28,7 @@ import { ServiceMichocComponent } from './components/service-michoc/service-mich
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import { MaterielComponent } from './components/materiel/materiel.component';
 import { AbonnementComponent } from './components/abonnement/abonnement.component';
-import {ListboxModule} from 'primeng/listbox';
+import {DropdownModule} from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -60,7 +60,7 @@ import {ListboxModule} from 'primeng/listbox';
     InputNumberModule,
     PasswordModule,
     InputTextareaModule,
-    ListboxModule
+    DropdownModule
     
   ],
   providers: [

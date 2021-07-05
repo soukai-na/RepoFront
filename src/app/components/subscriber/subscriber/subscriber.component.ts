@@ -5,6 +5,7 @@ import { Subscriber } from 'src/app/model/subscriber';
 import { ServiceMichocService } from 'src/app/service/service-michoc.service';
 import { SubscriberService } from 'src/app/service/subscriber.service';
 
+
 @Component({
   selector: 'app-subscriber',
   templateUrl: './subscriber.component.html',
@@ -17,21 +18,27 @@ export class SubscriberComponent implements OnInit {
   cols: any[] = [];
   items: MenuItem[] = [];
   displaySaveDialog: boolean = false;
-  services:service_michoc[]=[];
-  selectedService!:service_michoc;
+  services!:service_michoc[];
+  selectedService:any;
   
   constructor(private subscriberService: SubscriberService,private serviceMichocService:ServiceMichocService, private messageService: MessageService, private confirmService: ConfirmationService)
-   {}
+   {
+
+    this.services = [
+      {id_service: 1, nom_service: 'rh', description:"service rh"},
+      {id_service: 2, nom_service: 'Marketing', description:"service marketing"},
+      {id_service: 3, nom_service: 'SI', description:"service si"}
+  ];
+   }
 
 
- 
+
 
   getAll() {
     this.subscriberService.getAll().subscribe(
      
       (resultat: any) => {
        this.subscribers = resultat;
-       console.log(this.serviceMichocService.getAll());
       },
       error => {
         console.log(error);
@@ -62,6 +69,7 @@ export class SubscriberComponent implements OnInit {
         this.validerSubscriber(subscriber);
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'subscriber inséré' });
         this.displaySaveDialog = false;
+        console.log(this.selectedService.id_service);
       },
       error => {
         console.log(error);
@@ -108,12 +116,14 @@ export class SubscriberComponent implements OnInit {
 
   ngOnInit() {
     this.getAll();
+    this.serviceMichocService.getAll();
+    
     this.cols = [
       { field: "nom_subscriber", header: "Nom" },
       { field: "prenom_subscriber", header: "Prénom" },
       { field: "num_sim", header: "Numéro SIM" },
       { field: "fonction", header: "Fonction" },
-      { field: "nom_service", header: "Service" }
+      { field: "id_service", header: "Service" }
     ];
     this.items = [
       {
