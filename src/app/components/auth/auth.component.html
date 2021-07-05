@@ -1,0 +1,21 @@
+<body>
+<div class="auth">
+    <h3>Sign In</h3>
+    <i class="pi pi-user"></i>
+    <div class="p-field p-col-12 p-md-4">
+        <div class="p-inputgroup">
+            
+            <span class="p-float-label">
+                <input type="text" id="username" pInputText [(ngModel)]="value">
+                <label for="username">Username</label>
+            </span>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <p-password [(ngModel)]="value2" [toggleMask]="true" placeholder="Password"></p-password>
+    </div>
+    <br>
+    <button pButton pRipple (click)=checkLogin() type="button" label="sign in" class="p-button-raised p-button-success"></button>
+</div>
+</body>

@@ -22,8 +22,8 @@ export class SubscriberService {
      return this.http.post(this.baseURL+"Subscribers", JSON.stringify(subscriber), {headers: headers});
   }
 
-  deleteSubscribers(id_sub:number):Observable<any>{
-    return this.http.delete(this.baseURL + "Subscribers/"+id_sub);
+  deleteSubscribers(id_subscriber:number):Observable<any>{
+    return this.http.delete(this.baseURL + "Subscribers/"+id_subscriber);
   }
   
   

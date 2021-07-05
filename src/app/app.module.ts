@@ -21,13 +21,20 @@ import { MessageService } from 'primeng/api';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {InputNumberModule} from 'primeng/inputnumber';
+import { AuthComponent } from './components/auth/auth.component';
+import {PasswordModule} from 'primeng/password';
+import { LogoutComponent } from './components/logout/logout.component';
+import { ServiceMichocComponent } from './components/service-michoc/service-michoc.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SubscriberComponent,
     MenuComponent,
-    HeaderComponent
+    HeaderComponent,
+    AuthComponent,
+    LogoutComponent,
+    ServiceMichocComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +51,8 @@ import {InputNumberModule} from 'primeng/inputnumber';
     InputTextModule,
     ButtonModule,
     ConfirmDialogModule,
-    InputNumberModule
+    InputNumberModule,
+    PasswordModule
     
   ],
   providers: [

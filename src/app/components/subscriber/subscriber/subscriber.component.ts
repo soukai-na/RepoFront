@@ -32,7 +32,7 @@ export class SubscriberComponent implements OnInit {
   }
   showSaveDialog(edit: boolean) {
     if (edit) {
-      if (this.subscriber != null && this.subscriber.id_sub != null) {
+      if (this.subscriber != null && this.subscriber.id_subscriber != null) {
         this.subscriber= this.subscriber;
       } else {
         this.messageService.add({ severity: 'warn', summary: "Warning", detail: "séléctionnez un subscriebr s'il vous plait!" });
@@ -60,14 +60,14 @@ export class SubscriberComponent implements OnInit {
 
 
   deleteSubscribers() {
-    if (this.subscriber == null || this.subscriber.id_sub == null) {
+    if (this.subscriber == null || this.subscriber.id_subscriber == null) {
       this.messageService.add({ severity: 'warn', summary: "Warning", detail: "séléctionnez un subscriebr s'il vous plait!" });
       return;
     }
     this.confirmService.confirm({
       message: "Est-ce que vous voulez supprimez ce subscriber?",
       accept: () => {
-        this.subscriberService.deleteSubscribers(this.subscriber.id_sub).subscribe(
+        this.subscriberService.deleteSubscribers(this.subscriber.id_subscriber).subscribe(
           (resultat: any) => {
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'subscriber ' + resultat.id_sub + ' supprimé' });
             return this.subscriberService.getAll();
@@ -80,14 +80,14 @@ export class SubscriberComponent implements OnInit {
 
 
 
-  deleteObjet(id_sub: number) {
-    let index = this.subscribers.findIndex((e) => e.id_sub == id_sub);
+  deleteObjet(id_subscriber: number) {
+    let index = this.subscribers.findIndex((e) => e.id_subscriber == id_subscriber);
     if (index != -1) {
       this.subscribers.splice(index, 1);
     }
   }
   validerSubscriber(subscriber: Subscriber) {
-    let index = this.subscribers.findIndex((e) => e.id_sub == subscriber.id_sub);
+    let index = this.subscribers.findIndex((e) => e.id_subscriber == subscriber.id_subscriber);
     if (index != -1) {
       this.subscribers[index] = subscriber;
     } else {
@@ -98,8 +98,8 @@ export class SubscriberComponent implements OnInit {
   ngOnInit() {
     this.getAll();
     this.cols = [
-      { field: "nom_sub", header: "Nom" },
-      { field: "prenom_sub", header: "Prénom" },
+      { field: "nom_subscriber", header: "Nom" },
+      { field: "prenom_subscriber", header: "Prénom" },
       { field: "num_sim", header: "Numéro SIM" },
       { field: "fonction", header: "Fonction" }
     ];
