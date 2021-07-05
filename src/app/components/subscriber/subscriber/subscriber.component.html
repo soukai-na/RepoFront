@@ -1,22 +1,25 @@
 <div class="ui-g">
     <p-toast></p-toast>
-    <p-confirmDialog header="Confirmation" acceptLabel="Oui" rejectLabel="Non" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <p-confirmDialog header="Confirmation" acceptLabel="Oui" rejectLabel="Non" icon="pi pi-exclamation-triangle">
+    </p-confirmDialog>
     <p-panel header="Gestion de subscribers" [style]="{'width':'80%'}">
         <div style="margin-bottom: 20px;">
             <p-menubar [model]="items"></p-menubar>
         </div>
-        <p-table [value]="subscribers" [columns]="cols" selectionMode="single" [(selection)]="subscriber" 
-        dataKey="num_sim" [paginator]="true" [rows]="4" >
+        <p-table [value]="subscribers" [columns]="cols" selectionMode="single" [(selection)]="subscriber"
+            dataKey="num_sim" [paginator]="true" [rows]="4">
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns" [pSortableColumn]="col.field">
                         {{col.header}}
-                        <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" arialLabelAsc="Activate to sort in ascending order" ></p-sortIcon>
+                        <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+                            ariaLabelDesc="Activate to sort in descending order"
+                            arialLabelAsc="Activate to sort in ascending order"></p-sortIcon>
                     </th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-subscriber let-columns="columns">
-                <tr [pSelectableRow]="subscriber"> 
+                <tr [pSelectableRow]="subscriber">
                     <td *ngFor="let col of columns">
                         {{subscriber[col.field]}}
                     </td>
@@ -35,7 +38,7 @@
                         <label for="nom_subscriber">Nom</label>
                     </div>
                     <div class="ui-g-8">
-                        <input pInputText id="nom_subscriber" [(ngModel)]="subscriber.nom_subscriber" required/>
+                        <input pInputText id="nom_subscriber" [(ngModel)]="subscriber.nom_subscriber" required />
                     </div>
                 </div>
             </div>
@@ -46,7 +49,7 @@
                         <label for="prenom_subscriber">Prénom</label>
                     </div>
                     <div class="ui-g-8">
-                        <input pInputText id="prenom_subscriber" [(ngModel)]="subscriber.prenom_subscriber" required/>
+                        <input pInputText id="prenom_subscriber" [(ngModel)]="subscriber.prenom_subscriber" required />
                     </div>
                 </div>
             </div>
@@ -68,6 +71,20 @@
                     </div>
                     <div class="ui-g-8">
                         <input pInputText id="fonction" [(ngModel)]="subscriber.fonction" required />
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="service">Service</label>
+                    </div>
+                    <div class="ui-g-8">
+
+                        <p-listbox [(ngModel)]="selectedService" optionLabel="nom_service" [style]="{'width':'15rem'}">
+                            <option *ngFor="let service of services" [value]="service">{{service.nom_service}}</option>
+                        </p-listbox>
                     </div>
                 </div>
             </div>

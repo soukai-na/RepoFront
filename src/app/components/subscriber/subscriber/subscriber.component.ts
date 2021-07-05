@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
+import { service_michoc } from 'src/app/model/service-michoc';
 import { Subscriber } from 'src/app/model/subscriber';
+import { ServiceMichocService } from 'src/app/service/service-michoc.service';
 import { SubscriberService } from 'src/app/service/subscriber.service';
 
 @Component({
@@ -9,20 +11,27 @@ import { SubscriberService } from 'src/app/service/subscriber.service';
   styleUrls: ['./subscriber.component.css']
 })
 export class SubscriberComponent implements OnInit {
-  constructor(private subscriberService: SubscriberService, private messageService: MessageService, private confirmService: ConfirmationService) { }
 
   subscribers!: Subscriber[] ;
   subscriber!: Subscriber;
   cols: any[] = [];
   items: MenuItem[] = [];
   displaySaveDialog: boolean = false;
+  services:service_michoc[]=[];
+  selectedService!:service_michoc;
   
+  constructor(private subscriberService: SubscriberService,private serviceMichocService:ServiceMichocService, private messageService: MessageService, private confirmService: ConfirmationService)
+   {}
+
+
+ 
 
   getAll() {
     this.subscriberService.getAll().subscribe(
      
       (resultat: any) => {
        this.subscribers = resultat;
+       console.log(this.serviceMichocService.getAll());
       },
       error => {
         console.log(error);
@@ -30,6 +39,8 @@ export class SubscriberComponent implements OnInit {
     )
 
   }
+ 
+
   showSaveDialog(edit: boolean) {
     if (edit) {
       if (this.subscriber != null && this.subscriber.id_subscriber != null) {
@@ -69,7 +80,7 @@ export class SubscriberComponent implements OnInit {
       accept: () => {
         this.subscriberService.deleteSubscribers(this.subscriber.id_subscriber).subscribe(
           (resultat: any) => {
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'subscriber ' + resultat.id_sub + ' supprimé' });
+            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'subscriber ' + resultat.id_subscriber + ' supprimé' });
             return this.subscriberService.getAll();
           }
         )
@@ -101,7 +112,8 @@ export class SubscriberComponent implements OnInit {
       { field: "nom_subscriber", header: "Nom" },
       { field: "prenom_subscriber", header: "Prénom" },
       { field: "num_sim", header: "Numéro SIM" },
-      { field: "fonction", header: "Fonction" }
+      { field: "fonction", header: "Fonction" },
+      { field: "nom_service", header: "Service" }
     ];
     this.items = [
       {

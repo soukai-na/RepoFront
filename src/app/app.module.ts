@@ -25,6 +25,10 @@ import { AuthComponent } from './components/auth/auth.component';
 import {PasswordModule} from 'primeng/password';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ServiceMichocComponent } from './components/service-michoc/service-michoc.component';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import { MaterielComponent } from './components/materiel/materiel.component';
+import { AbonnementComponent } from './components/abonnement/abonnement.component';
+import {ListboxModule} from 'primeng/listbox';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,9 @@ import { ServiceMichocComponent } from './components/service-michoc/service-mich
     HeaderComponent,
     AuthComponent,
     LogoutComponent,
-    ServiceMichocComponent
+    ServiceMichocComponent,
+    MaterielComponent,
+    AbonnementComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,9 @@ import { ServiceMichocComponent } from './components/service-michoc/service-mich
     ButtonModule,
     ConfirmDialogModule,
     InputNumberModule,
-    PasswordModule
+    PasswordModule,
+    InputTextareaModule,
+    ListboxModule
     
   ],
   providers: [
