@@ -25,6 +25,10 @@ export class SubscriberService {
   deleteSubscribers(id_subscriber:number):Observable<any>{
     return this.http.delete(this.baseURL + "Subscribers/"+id_subscriber);
   }
+
+  getServices(){
+    return this.http.get(this.baseURL+"AllServices");
+  }
   
   
 }
