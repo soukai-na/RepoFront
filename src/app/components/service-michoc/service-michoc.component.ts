@@ -79,7 +79,14 @@ export class ServiceMichocComponent implements OnInit {
       }
     })
   }
-
+//..??
+  noDeleted(){
+    if(this.serviceMichocService.deleteService(this.serviceMichoc.id_service)){
+      return true;
+    }else{
+      return false;
+    }
+  }
 
   deleteObjet(id_service:number){
     let index= this.servicesMichoc.findIndex((e)=>e.id_service == id_service);
@@ -121,5 +128,6 @@ export class ServiceMichocComponent implements OnInit {
       }
     ]
   }
+  
 
 }

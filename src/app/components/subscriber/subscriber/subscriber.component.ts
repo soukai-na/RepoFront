@@ -18,8 +18,11 @@ export class SubscriberComponent implements OnInit {
   cols: any[] = [];
   items: MenuItem[] = [];
   displaySaveDialog: boolean = false;
+  displayInfo:boolean=false;
   services:any;
   service:any;
+  abonnements:any;
+  abonnement:any
 
 
   
@@ -43,7 +46,26 @@ export class SubscriberComponent implements OnInit {
     )
 
   }
+
+  displaySubscriber(){
+    if (this.subscriber == null || this.subscriber.id_subscriber == null) {
+      this.messageService.add({ severity: 'warn', summary: "Warning", detail: "séléctionnez un subscriebr s'il vous plait!" });
+      return;
+    }else{
+      this.subscriberService.getSubscriberById(this.subscriber.id_subscriber).subscribe(
+        (resultt:any)=>{
+          this.subscriber=resultt;
+          console.log(resultt);
+          this.displayInfo=true;
+        },
+        error => {
+          console.log(error);
+        }
+      )
+    }
+  }
  
+
   getServices(){
     this.subscriberService.getServices().subscribe(
       (result:any)=>{
@@ -55,6 +77,16 @@ export class SubscriberComponent implements OnInit {
         console.log(error);
       }
 
+    )
+  }
+
+  getAbonnements(){
+    this.subscriberService.getAbonnements().subscribe(
+      (data:any)=>{
+        this.abonnements=data;
+        console.log(data);
+        console.log(data.id_abonnement);
+      }
     )
   }
   
@@ -87,7 +119,17 @@ export class SubscriberComponent implements OnInit {
       }
     );
   }
-
+ 
+  saveAbonnement(){
+    this.subscriberService.saveAbonnement(this.subscriber.id_subscriber,this.abonnement,this.subscriber).subscribe(
+      (donnees:any)=>{
+        let subscriber = donnees as Subscriber;
+        this.validerSubscriber(subscriber);
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'abonnment inséré' });
+        this.displayInfo = false;
+      }
+    )
+  }
 
   deleteSubscribers() {
     if (this.subscriber == null || this.subscriber.id_subscriber == null) {
@@ -110,6 +152,7 @@ export class SubscriberComponent implements OnInit {
 
 
 
+
   deleteObjet(id_subscriber: number) {
     let index = this.subscribers.findIndex((e) => e.id_subscriber == id_subscriber);
     if (index != -1) {
@@ -125,20 +168,21 @@ export class SubscriberComponent implements OnInit {
     }
   }
 
+  
 
   
 
   ngOnInit() {
     this.getAll();
     this.getServices();
-    
+    this.getAbonnements();
     
     this.cols = [
       { field: "nom_subscriber", header: "Nom" },
       { field: "prenom_subscriber", header: "Prénom" },
       { field: "num_sim", header: "Numéro SIM" },
       { field: "fonction", header: "Fonction" },
-      { field: "service", header: "Service" }
+      { field: "service_id", header: "Service" }
     ];
     this.items = [
       {
@@ -155,6 +199,11 @@ export class SubscriberComponent implements OnInit {
         label: "Eleminer",
         icon: 'pi pi-fw pi-times',
         command: () => this.deleteSubscribers()
+      },
+      {
+        label: "Afficher",
+        icon: 'pi pi-fw pi-exclamation-circle',
+        command: () => this.displaySubscriber()
       }
 
     ]

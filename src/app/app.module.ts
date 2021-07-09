@@ -33,6 +33,7 @@ import {AvatarModule} from 'primeng/avatar';
 import { FactureComponent } from './components/facture/facture.component';
 import {CalendarModule} from 'primeng/calendar';
 import {SelectButtonModule} from 'primeng/selectbutton';
+import {InputMaskModule} from 'primeng/inputmask';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import {SelectButtonModule} from 'primeng/selectbutton';
     DropdownModule,
     AvatarModule,
     CalendarModule,
-    SelectButtonModule
+    SelectButtonModule,
+    InputMaskModule
     
   ],
   providers: [

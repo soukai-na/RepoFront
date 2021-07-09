@@ -98,4 +98,42 @@
             </div>
         </p-footer>
     </p-dialog>
+
+    <p-dialog header="Information subscriber" [responsive]="true" [(visible)]="displayInfo"
+        [style]="{'width': '300px', 'background':'hsl(210deg 90% 75%)'}" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+
+           <b>Nom:</b> {{subscriber.nom_subscriber}}
+           <br>
+           <b>Prenom:</b> {{subscriber.prenom_subscriber}}
+           <br>
+           <b>Numéro sim:</b> {{subscriber.num_sim}}
+           <br>
+           <b>Service:</b>{{subscriber.service_id}}
+           <br>
+           <b>Fonction:</b> {{subscriber.fonction}}
+
+           <div class="ui-g ui-fluid">
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="abonnement">Abonnement</label>
+                </div>
+                <div class="ui-g-8">
+                    <select class="ui-g-8" name="abonnement" id="abonnement" [(ngModel)]="abonnement">
+                        <option *ngFor="let abonnement of abonnements" [ngValue]="abonnement.id_abonnement">{{abonnement.type}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        </ng-template>
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" pButton icon="pi pi-check" (click)="saveAbonnement()" label="Ajouter"></button>
+            </div>
+        </p-footer>
+    </p-dialog>
+
+    
 </div>

@@ -6,7 +6,8 @@ export class Subscriber{
         public prenom_subscriber:string =null as any,
         public num_sim:number =null as any,
         public fonction:string =null as any,
-        public service:any=null as any
+        public service_id:any=null as any,
+        public abonnement_id:any=null as any
         )
         {}
 
