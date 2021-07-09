@@ -11,3 +11,10 @@
     box-shadow: 5px 14px 10px 0px #6c757d66;
     position:fixed;
 }
+
+p-avatar {
+    float: right !important;
+    margin-right: 60px !important;
+    margin-top: -39px !important;
+    color: #86bff9 !important;
+}

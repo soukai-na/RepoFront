@@ -19,7 +19,8 @@ export class SubscriberComponent implements OnInit {
   items: MenuItem[] = [];
   displaySaveDialog: boolean = false;
   services:any;
-  service:string="";
+  service:any;
+
 
   
   constructor(private subscriberService: SubscriberService,private serviceMichocService:ServiceMichocService, private messageService: MessageService, private confirmService: ConfirmationService)
@@ -34,6 +35,7 @@ export class SubscriberComponent implements OnInit {
      
       (resultat: any) => {
        this.subscribers = resultat;
+       console.log(resultat);
       },
       error => {
         console.log(error);
@@ -46,6 +48,8 @@ export class SubscriberComponent implements OnInit {
     this.subscriberService.getServices().subscribe(
       (result:any)=>{
         this.services=result;
+        console.log(result);
+        console.log(result.id_service);
       },
       error => {
         console.log(error);
@@ -69,7 +73,7 @@ export class SubscriberComponent implements OnInit {
   }
 
   saveSubscriber() {
-    this.subscriberService.saveSubscriber(this.subscriber).subscribe(
+    this.subscriberService.saveSubscriber(this.service,this.subscriber).subscribe(
       (resultat: any) => {
         let subscriber = resultat as Subscriber;
         this.validerSubscriber(subscriber);
@@ -93,7 +97,7 @@ export class SubscriberComponent implements OnInit {
     this.confirmService.confirm({
       message: "Est-ce que vous voulez supprimez ce subscriber?",
       accept: () => {
-        this.subscriberService.deleteSubscribers(this.subscriber.id_subscriber).subscribe(
+        this.subscriberService.deleteSubscribers(this.subscriber.id_subscriber,this.service.id_service).subscribe(
           (resultat: any) => {
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'subscriber ' + resultat.id_subscriber + ' supprimé' });
             return this.subscriberService.getAll();

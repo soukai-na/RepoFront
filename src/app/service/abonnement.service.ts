@@ -12,18 +12,18 @@ export class AbonnementService {
   constructor(private http:HttpClient) { }
 
   getAll():Observable<any>{
-    return this.http.get(this.baseURL+ "AllAbonnements");
+    return this.http.get(this.baseURL+ "abonnements");
 
   }
 
   saveAbonnement(abonnement:Abonnement):Observable<any>{
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
-     return this.http.post(this.baseURL+"Abonnements", JSON.stringify(abonnement), {headers: headers});
+     return this.http.post(this.baseURL+"abonnements", JSON.stringify(abonnement), {headers: headers});
   }
 
   deleteAbonnements(id_abonnement:number):Observable<any>{
-    return this.http.delete(this.baseURL + "Abonnements/"+id_abonnement);
+    return this.http.delete(this.baseURL + "abonnements/"+id_abonnement);
   }
 
 }

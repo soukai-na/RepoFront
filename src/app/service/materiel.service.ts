@@ -12,18 +12,18 @@ export class MaterielService {
   constructor(private http:HttpClient) { }
 
   getAll():Observable<any>{
-    return this.http.get(this.baseURL+ "AllMateriels");
+    return this.http.get(this.baseURL+ "materiels");
 
   }
 
   saveMateriel(materiel:materiel):Observable<any>{
   let headers = new HttpHeaders();
   headers = headers.set('Content-Type', 'application/json');
-  return this.http.post(this.baseURL+"Materiels", JSON.stringify(materiel), {headers: headers});
+  return this.http.post(this.baseURL+"materiels", JSON.stringify(materiel), {headers: headers});
   }
   
   deleteMateriels(id_materiel:number):Observable<any>{
-    return this.http.delete(this.baseURL+"Materiels/"+id_materiel);
+    return this.http.delete(this.baseURL+"materiels/"+id_materiel);
   }
 
 

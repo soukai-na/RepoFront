@@ -1,0 +1,88 @@
+<div class="ui-g">
+    <p-toast></p-toast>
+    <p-confirmDialog header="Confirmation" acceptLabel="Oui" rejectLabel="Non" icon="pi pi-exclamation-triangle">
+    </p-confirmDialog>
+    <p-panel header="Gestion de factures" [style]="{'width':'80%'}">
+        <div style="margin-bottom: 20px;">
+            <p-menubar [model]="items"></p-menubar>
+        </div>
+        <p-table [value]="factures" [columns]="cols" selectionMode="single" [(selection)]="facture"
+            dataKey="num_facture" [paginator]="true" [rows]="4">
+            
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                        {{col.header}}
+                        <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+                            ariaLabelDesc="Activate to sort in descending order"
+                            arialLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                    </th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-facture let-columns="columns">
+                <tr [pSelectableRow]="facture" >
+                    <td *ngFor="let col of columns">
+                        {{facture[col.field]}}
+                    </td>
+            </ng-template>
+        </p-table>
+    </p-panel>
+    <p-dialog header="Nouveau facture" [responsive]="true" [(visible)]="displaySaveDialog"
+        [style]="{'width': '300px', 'background':'hsl(210deg 90% 75%)'}" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12">
+                    <div class="ui-g-8">
+                        <label for="num_facture">Numero facture</label>
+                        <p-inputNumber inputId="num_facture" [(ngModel)]="facture.num_facture">
+                        </p-inputNumber>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="p-fluid p-grid p-formgrid">
+                <div class="p-field ui-g-8 p-col-5 p-md-2">
+                    <label for="date_facture">Date Facture</label>
+                    <p-calendar inputId="date_facture" [(ngModel)]="facture.date_facture"></p-calendar>
+                </div>
+                </div>
+
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12">
+                    <div class="ui-g-8">
+                        <label for="montant">Montant</label>
+                        <p-inputNumber inputId="montant" [(ngModel)]="facture.montant">
+                        </p-inputNumber>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="subscriber">Subscriber</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <select class="ui-g-8" name="subscriber" id="subscriber" [(ngModel)]="subscriber">
+                            <option *ngFor="let subscriber of subscribers" [ngValue]="subscriber.id_subscriber">{{subscriber.num_sim}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+{{subscriber}}
+            
+
+
+        </ng-template>
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" pButton icon="pi pi-check" (click)="saveFacture()" label="Ajouter"></button>
+            </div>
+        </p-footer>
+    </p-dialog>
+</div>

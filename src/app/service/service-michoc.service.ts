@@ -12,18 +12,18 @@ export class ServiceMichocService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any> {
-    return this.http.get(this.baseURL + "AllServices");
+    return this.http.get(this.baseURL + "services");
 
   }
 
   saveService(service: service_michoc): Observable<any> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
-    return this.http.post(this.baseURL + "Services", JSON.stringify(service), { headers: headers });
+    return this.http.post(this.baseURL + "services", JSON.stringify(service), { headers: headers });
   }
 
   deleteService(id_service: number): Observable<any> {
-    return this.http.delete(this.baseURL + "Services/" + id_service);
+    return this.http.delete(this.baseURL + "services/" + id_service);
   }
 
 

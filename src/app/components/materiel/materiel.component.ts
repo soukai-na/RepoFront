@@ -10,13 +10,23 @@ import { MaterielService } from 'src/app/service/materiel.service';
 })
 export class MaterielComponent implements OnInit {
 
-  constructor(private materielService:MaterielService,  private messageService: MessageService, private confirmService: ConfirmationService) { }
+  
 
   materiels!:materiel[];
   materiel!:materiel;
   cols: any[] = [];
   items: MenuItem[] = [];
   displaySaveDialog: boolean = false;
+  stateOptions: any[]=[];
+  value1: string = "off";
+  
+  constructor(
+    private materielService:MaterielService,  
+    private messageService: MessageService,
+     private confirmService: ConfirmationService
+     ) { 
+       this.stateOptions = [{label: 'Off', value: 'off'}, {label: 'On', value: 'on'}];
+      }
 
   getAll() {
     this.materielService.getAll().subscribe(

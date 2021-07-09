@@ -29,6 +29,10 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import { MaterielComponent } from './components/materiel/materiel.component';
 import { AbonnementComponent } from './components/abonnement/abonnement.component';
 import {DropdownModule} from 'primeng/dropdown';
+import {AvatarModule} from 'primeng/avatar';
+import { FactureComponent } from './components/facture/facture.component';
+import {CalendarModule} from 'primeng/calendar';
+import {SelectButtonModule} from 'primeng/selectbutton';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,8 @@ import {DropdownModule} from 'primeng/dropdown';
     LogoutComponent,
     ServiceMichocComponent,
     MaterielComponent,
-    AbonnementComponent
+    AbonnementComponent,
+    FactureComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +65,10 @@ import {DropdownModule} from 'primeng/dropdown';
     InputNumberModule,
     PasswordModule,
     InputTextareaModule,
-    DropdownModule
+    DropdownModule,
+    AvatarModule,
+    CalendarModule,
+    SelectButtonModule
     
   ],
   providers: [
