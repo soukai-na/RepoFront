@@ -1,0 +1,14 @@
+.p-panel .p-panel-header {
+    border: 1px solid #dee2e6;
+    padding: 1rem;
+    background: #86bff9;
+    color: #f8f9fa;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+select{
+    width: 248px;
+    height: 38px;
+    border-color: #ced4da;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}

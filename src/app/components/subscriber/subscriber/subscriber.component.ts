@@ -22,7 +22,7 @@ export class SubscriberComponent implements OnInit {
   services:any;
   service:any;
   abonnements:any;
-  abonnement:any
+  abonnement:any;
 
 
   
@@ -86,6 +86,9 @@ export class SubscriberComponent implements OnInit {
         this.abonnements=data;
         console.log(data);
         console.log(data.id_abonnement);
+      },
+      error => {
+        console.log(error);
       }
     )
   }

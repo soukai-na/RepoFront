@@ -10,29 +10,32 @@ import { MaterielService } from 'src/app/service/materiel.service';
 })
 export class MaterielComponent implements OnInit {
 
-  
 
-  materiels!:materiel[];
-  materiel!:materiel;
+
+  materiels!: materiel[];
+  materiel!: materiel;
   cols: any[] = [];
   items: MenuItem[] = [];
   displaySaveDialog: boolean = false;
-  stateOptions: any[]=[];
-  value1: string = "off";
-  
+  displayInfo:boolean=false;
+  stateOptions: any[] = [];
+  value1: string="off";
+  subscribers: any;
+  subscriber: any;
+
   constructor(
-    private materielService:MaterielService,  
+    private materielService: MaterielService,
     private messageService: MessageService,
-     private confirmService: ConfirmationService
-     ) { 
-       this.stateOptions = [{label: 'Off', value: 'off'}, {label: 'On', value: 'on'}];
-      }
+    private confirmService: ConfirmationService
+  ) {
+    this.stateOptions = [{ label: 'Off', value: 'off' }, { label: 'On', value: 'on' }];
+  }
 
   getAll() {
     this.materielService.getAll().subscribe(
-     
+
       (resultat: any) => {
-       this.materiels = resultat;
+        this.materiels = resultat;
       },
       error => {
         console.log(error);
@@ -41,10 +44,22 @@ export class MaterielComponent implements OnInit {
 
   }
 
+  getSubscriber(){
+    this.materielService.getSubscribers().subscribe(
+      (data:any)=>{
+        this.subscribers=data;
+        console.log(data);
+        console.log(data.id_abonnement);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
   showSaveDialog(edit: boolean) {
     if (edit) {
       if (this.materiel != null && this.materiel.id_materiel != null) {
-        this.materiel= this.materiel;
+        this.materiel = this.materiel;
       } else {
         this.messageService.add({ severity: 'warn', summary: "Warning", detail: "séléctionnez un materiel s'il vous plait!" });
         return;
@@ -66,6 +81,35 @@ export class MaterielComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+  giveMateriel() {
+    this.materielService.saveMaterielToSubscriber(this.materiel.id_materiel, this.subscriber, this.materiel).subscribe(
+      (data: any) => {
+        let materiel = data as materiel;
+        this.validerMateriel(materiel);
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'materiel affecté au subscriber'+data.subscriber_id });
+        this.value1 = "on";
+        this.displayInfo = false;
+      }
+    )
+  }
+
+  displayMateriel(){
+    if (this.materiel == null || this.materiel.id_materiel == null) {
+      this.messageService.add({ severity: 'warn', summary: "Warning", detail: "séléctionnez un materiel s'il vous plait!" });
+      return;
+    }else{
+      this.materielService.getMaterielById(this.materiel.id_materiel).subscribe(
+        (resultt:any)=>{
+          this.materiel=resultt;
+          console.log(resultt);
+          this.displayInfo=true;
+        },
+        error => {
+          console.log(error);
+        }
+      )
+    }
   }
 
   deleteMateriels() {
@@ -103,12 +147,13 @@ export class MaterielComponent implements OnInit {
   }
 
 
-  
 
-  ngOnInit()
-  {
+
+  ngOnInit() {
     this.getAll();
-    this.cols=[
+    this.getSubscriber();
+    
+    this.cols = [
       { field: "serial_number", header: "Nombre serial" },
       { field: "nom", header: "Nom" },
       { field: "model", header: "Modle" },
@@ -130,6 +175,11 @@ export class MaterielComponent implements OnInit {
         label: "Eleminer",
         icon: 'pi pi-fw pi-times',
         command: () => this.deleteMateriels()
+      },
+      {
+        label: "Donner materiel",
+        icon: 'pi pi-fw pi-reply',
+        command: () => this.displayMateriel()
       }
 
     ]

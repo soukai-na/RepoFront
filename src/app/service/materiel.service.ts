@@ -26,6 +26,18 @@ export class MaterielService {
     return this.http.delete(this.baseURL+"materiels/"+id_materiel);
   }
 
+  saveMaterielToSubscriber(id_materiel:number,id_subscriber:number,materiel:materiel):Observable<any>{
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    return this.http.post(this.baseURL+"materiels/"+id_materiel+"/subscribers/"+id_subscriber, JSON.stringify(materiel), {headers: headers});
+  }
 
+  getSubscribers(){
+    return this.http.get(this.baseURL+ "subscribers");
+  }
+
+  getMaterielById(id_materiel: number): Observable<any> {
+    return this.http.get(this.baseURL + "materiels/" + id_materiel);
+  }
 
 }

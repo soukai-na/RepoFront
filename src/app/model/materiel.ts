@@ -5,7 +5,8 @@ export class materiel{
         public nom:string=null as any,
         public model:string=null as any,
         public description:string=null as any,
-        public type:string=null as any
+        public type:string=null as any,
+        public subscriber_id:string=null as any
     )
     {}
 }
