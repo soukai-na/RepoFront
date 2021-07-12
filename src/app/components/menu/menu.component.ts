@@ -20,8 +20,8 @@ export class MenuComponent implements OnInit {
 
     ngOnInit() {
         this.items = [
-          {label: 'Dashboard', icon: 'pi pi-fw pi-th-large' },
-          {label: 'Service', icon: 'pi pi-fw pi-pencil'  , routerLink:['services'] },
+          {label: 'Dashboard', icon: 'pi pi-fw pi-th-large', routerLink:['dashboard'] },
+          {label: 'Service', icon: 'pi pi-fw pi-pencil'  , routerLink:['services']},
           {label: 'Subscribers', icon: 'pi pi-fw pi-user' , routerLink:['subscribers']},
           {label: 'Matériels', icon: 'pi pi-fw pi-folder-open'  , routerLink:['materiels'] },
           {label: 'Abonnements', icon: 'pi pi-fw pi-list' , routerLink:['abonnements'] },

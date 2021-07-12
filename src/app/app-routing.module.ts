@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AbonnementComponent } from './components/abonnement/abonnement.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FactureComponent } from './components/facture/facture.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { MaterielComponent } from './components/materiel/materiel.component';
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'materiels', component: MaterielComponent },
   { path: 'abonnements', component: AbonnementComponent },
-  { path: 'factures', component: FactureComponent }
+  { path: 'factures', component: FactureComponent },
+  { path: 'dashboard', component: DashboardComponent }
 ];
 
 @NgModule({

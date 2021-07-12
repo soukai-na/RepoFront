@@ -34,7 +34,8 @@ import { FactureComponent } from './components/facture/facture.component';
 import {CalendarModule} from 'primeng/calendar';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {InputMaskModule} from 'primeng/inputmask';
-
+import {KnobModule} from 'primeng/knob';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {InputMaskModule} from 'primeng/inputmask';
     ServiceMichocComponent,
     MaterielComponent,
     AbonnementComponent,
-    FactureComponent
+    FactureComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,8 @@ import {InputMaskModule} from 'primeng/inputmask';
     AvatarModule,
     CalendarModule,
     SelectButtonModule,
-    InputMaskModule
+    InputMaskModule,
+    KnobModule
     
   ],
   providers: [

@@ -21,3 +21,13 @@ body{
 .p-panel .p-panel-content {
     border: 1px solid #86bff9 !important;
 }
+
+
+
+
+
+a.p-panelmenu-header-link.ng-tns-c112-0.ng-star-inserted.p-menuitem-link-active  {
+    background: white !important;
+    font-style: italic;
+    color: #86bff9;
+}

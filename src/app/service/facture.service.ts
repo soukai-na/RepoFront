@@ -21,8 +21,8 @@ export class FactureService {
      return this.http.post(this.baseURL+"subscribers/"+id_subscriber+"/factures", JSON.stringify(facture), {headers: headers});
   }
 
-  deleteFactures(id_facture:number):Observable<any>{
-    return this.http.delete(this.baseURL + "factures/"+id_facture);
+  deleteFactures(id_facture:number,id_subscriber:number):Observable<any>{
+    return this.http.delete(this.baseURL +"subscribers/"+id_subscriber+ "/factures/"+id_facture);
   }
 
   getSubscribers(){

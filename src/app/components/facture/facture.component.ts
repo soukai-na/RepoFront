@@ -88,7 +88,7 @@ export class FactureComponent implements OnInit {
     this.confirmService.confirm({
       message: "Est-ce que vous voulez supprimez cette facture?",
       accept: () => {
-        this.factureService.deleteFactures(this.facture.id_facture).subscribe(
+        this.factureService.deleteFactures(this.facture.id_facture,this.facture.subscriber.id_subscriber).subscribe(
           (resultat: any) => {
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'facture ' + resultat.id_facture + ' supprimé' });
             return this.factureService.getAll();
