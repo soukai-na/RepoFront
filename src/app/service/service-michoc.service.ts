@@ -19,6 +19,7 @@ export class ServiceMichocService {
   saveService(service: service_michoc): Observable<any> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
+    
     return this.http.post(this.baseURL + "services", JSON.stringify(service), { headers: headers });
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 import { service_michoc } from 'src/app/model/service-michoc';
+import { Subscriber } from 'src/app/model/subscriber';
 import { ServiceMichocService } from 'src/app/service/service-michoc.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { ServiceMichocService } from 'src/app/service/service-michoc.service';
   styleUrls: ['./service-michoc.component.css']
 })
 export class ServiceMichocComponent implements OnInit {
+  subscriber!: Subscriber;
 
   constructor(private serviceMichocService: ServiceMichocService, private messageService: MessageService, private confirmService: ConfirmationService) { }
 
@@ -79,14 +81,7 @@ export class ServiceMichocComponent implements OnInit {
       }
     })
   }
-//..??
-  noDeleted(){
-    if(this.serviceMichocService.deleteService(this.serviceMichoc.id_service)){
-      return true;
-    }else{
-      return false;
-    }
-  }
+
 
   deleteObjet(id_service:number){
     let index= this.servicesMichoc.findIndex((e)=>e.id_service == id_service);

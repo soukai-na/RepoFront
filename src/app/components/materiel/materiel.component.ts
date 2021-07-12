@@ -28,7 +28,7 @@ export class MaterielComponent implements OnInit {
     private messageService: MessageService,
     private confirmService: ConfirmationService
   ) {
-    this.stateOptions = [{ label: 'Off', value: 'off' }, { label: 'On', value: 'on' }];
+    this.stateOptions = [{ label: 'Off', value: 'off' }];
   }
 
   getAll() {
@@ -88,7 +88,7 @@ export class MaterielComponent implements OnInit {
         let materiel = data as materiel;
         this.validerMateriel(materiel);
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'materiel affecté au subscriber'+data.subscriber_id });
-        this.value1 = "on";
+       
         this.displayInfo = false;
       }
     )

@@ -16,7 +16,7 @@
     border: 1px solid #86bff9 !important;
 }
 body{
-    background-image: url("https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-08.jpg") !important;
+    background-image: url("https://assets.codepen.io/361089/internal/screenshots/pens/ZQJyeq.default.png?fit=cover&format=auto&ha=true&height=719&quality=75&v=2&version=1453997785&width=1279") !important;
     padding-top: 120px;
     height: 655px;
 }
@@ -32,7 +32,8 @@ body{
     height: 400px;
     margin-left: 500px;
     background-color: #fbfbfb;
-    box-shadow: 12px 12px 12px rgba(109, 164, 231, 0.2)
+    box-shadow: 12px 12px 12px rgba(109, 164, 231, 0.2);
+    border-radius: 34px;
 }
 h3{
     font-family: monospace;

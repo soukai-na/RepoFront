@@ -17,6 +17,12 @@
                             ariaLabelDesc="Activate to sort in descending order"
                             arialLabelAsc="Activate to sort in ascending order"></p-sortIcon>
                     </th>
+                    <th >
+                        Service
+                        <p-sortIcon  ariaLabel="Activate to sort"
+                            ariaLabelDesc="Activate to sort in descending order"
+                            arialLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                    </th>
                 </tr>
             </ng-template>
 
@@ -24,6 +30,9 @@
                 <tr [pSelectableRow]="subscriber" >
                     <td *ngFor="let col of columns">
                         {{subscriber[col.field]}}
+                    </td>
+                    <td>
+                        {{subscriber.service.nom_service}}
                     </td>
             </ng-template>
         </p-table>
@@ -78,7 +87,6 @@
                 </div>
             </div>
             
-{{service}}
             <div class="ui-g ui-fluid">
                 <div class="ui-g-12">
                     <div class="ui-g-4">
@@ -110,15 +118,18 @@
            <br>
            <b>Numéro sim:</b> {{subscriber.num_sim}}
            <br>
-           <b>Service:</b>{{subscriber.service_id}}
+           <b>Service:</b>{{subscriber.service.nom_service}}
            <br>
            <b>Fonction:</b> {{subscriber.fonction}}
 
            <div class="ui-g ui-fluid">
             <div class="ui-g-12">
                 <div class="ui-g-4">
-                    <label for="abonnement"><b>Abonnement</b></label>
+                    <label for="abonnement"><b>Abonnement:</b>
+                        <div *ngIf="subscriber.abonnement!=null">{{subscriber.abonnement.type}}</div>
+                    </label>
                 </div>
+                
                 <div class="ui-g-8">
                     <select class="ui-g-8" name="abonnement" id="abonnement" [(ngModel)]="abonnement">
                         <option *ngFor="let abonnement of abonnements" [ngValue]="abonnement.id_abonnement">{{abonnement.type}}</option>
@@ -126,7 +137,7 @@
                 </div>
             </div>
         </div>
-                  {{abonnement}}
+                  
         </ng-template>
         <p-footer>
             <div class="ui-dialog-buttonpane ui-helper-clearfix">

@@ -121,8 +121,7 @@ export class FactureComponent implements OnInit {
     this.cols = [
       { field: "num_facture", header: "Num Facture" },
       { field: "date_facture", header: "Date Facture" },
-      { field: "montant", header: "Montant" },
-      { field: "subscriber", header: "Subscriber" }
+      { field: "montant", header: "Montant" }
     ];
     this.items = [
       {

@@ -142,7 +142,7 @@ export class SubscriberComponent implements OnInit {
     this.confirmService.confirm({
       message: "Est-ce que vous voulez supprimez ce subscriber?",
       accept: () => {
-        this.subscriberService.deleteSubscribers(this.subscriber.id_subscriber,this.service.id_service).subscribe(
+        this.subscriberService.deleteSubscribers(this.subscriber.id_subscriber,this.subscriber.service.id_service).subscribe(
           (resultat: any) => {
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'subscriber ' + resultat.id_subscriber + ' supprimé' });
             return this.subscriberService.getAll();
@@ -184,8 +184,7 @@ export class SubscriberComponent implements OnInit {
       { field: "nom_subscriber", header: "Nom" },
       { field: "prenom_subscriber", header: "Prénom" },
       { field: "num_sim", header: "Numéro SIM" },
-      { field: "fonction", header: "Fonction" },
-      { field: "service_id", header: "Service" }
+      { field: "fonction", header: "Fonction" }
     ];
     this.items = [
       {
