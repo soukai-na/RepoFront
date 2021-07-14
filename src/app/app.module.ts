@@ -36,6 +36,8 @@ import {SelectButtonModule} from 'primeng/selectbutton';
 import {InputMaskModule} from 'primeng/inputmask';
 import {KnobModule} from 'primeng/knob';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HistoriqueComponent } from './components/historique/historique.component';
+import {DynamicDialogModule} from 'primeng/dynamicdialog';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MaterielComponent,
     AbonnementComponent,
     FactureComponent,
-    DashboardComponent
+    DashboardComponent,
+    HistoriqueComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     CalendarModule,
     SelectButtonModule,
     InputMaskModule,
-    KnobModule
+    KnobModule,
+    DynamicDialogModule
     
   ],
   providers: [

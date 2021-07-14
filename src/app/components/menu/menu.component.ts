@@ -26,7 +26,7 @@ export class MenuComponent implements OnInit {
           {label: 'Matériels', icon: 'pi pi-fw pi-folder-open'  , routerLink:['materiels'] },
           {label: 'Abonnements', icon: 'pi pi-fw pi-list' , routerLink:['abonnements'] },
           {label: 'Factures', icon: 'pi pi-fw pi-file' ,routerLink:['factures'] },
-          {label: 'Historiques', icon: 'pi pi-fw pi-clock'  },      
+          {label: 'Historiques', icon: 'pi pi-fw pi-clock' ,routerLink:['historiques']  },      
         ];
     }
   }

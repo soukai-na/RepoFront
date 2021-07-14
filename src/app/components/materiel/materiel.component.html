@@ -16,6 +16,12 @@
                             ariaLabelDesc="Activate to sort in descending order"
                             arialLabelAsc="Activate to sort in ascending order"></p-sortIcon>
                     </th>
+                    <th>
+                        Subscriber
+                        <p-sortIcon  ariaLabel="Activate to sort"
+                            ariaLabelDesc="Activate to sort in descending order"
+                            arialLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                    </th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-materiel let-columns="columns">
@@ -124,6 +130,7 @@
                     </div>
                     <div class="ui-g-8">
                         <select class="ui-g-8" name="subscriber" id="subscriber" [(ngModel)]="subscriber">
+                            <option [ngValue]="null">No one</option>
                             <option *ngFor="let subscriber of subscribers" [ngValue]="subscriber.id_subscriber">
                                 {{subscriber.num_sim}}</option>
                         </select>

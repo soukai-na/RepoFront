@@ -13,32 +13,32 @@ import { SubscriberService } from 'src/app/service/subscriber.service';
 })
 export class SubscriberComponent implements OnInit {
 
-  subscribers!: Subscriber[] ;
+  subscribers!: Subscriber[];
   subscriber!: Subscriber;
   cols: any[] = [];
   items: MenuItem[] = [];
   displaySaveDialog: boolean = false;
-  displayInfo:boolean=false;
-  services:any;
-  service:any;
-  abonnements:any;
-  abonnement:any;
+  displayInfo: boolean = false;
+  services: any;
+  service: any;
+  abonnements: any;
+  abonnement: any;
+  detail:boolean=false;
 
 
-  
-  constructor(private subscriberService: SubscriberService,private serviceMichocService:ServiceMichocService, private messageService: MessageService, private confirmService: ConfirmationService)
-   {
-   }
+
+  constructor(private subscriberService: SubscriberService, private serviceMichocService: ServiceMichocService, private messageService: MessageService, private confirmService: ConfirmationService) {
+  }
 
 
 
 
   getAll() {
     this.subscriberService.getAll().subscribe(
-     
+
       (resultat: any) => {
-       this.subscribers = resultat;
-       console.log(resultat);
+        this.subscribers = resultat;
+        console.log(resultat);
       },
       error => {
         console.log(error);
@@ -47,16 +47,16 @@ export class SubscriberComponent implements OnInit {
 
   }
 
-  displaySubscriber(){
+  displaySubscriber() {
     if (this.subscriber == null || this.subscriber.id_subscriber == null) {
       this.messageService.add({ severity: 'warn', summary: "Warning", detail: "séléctionnez un subscriebr s'il vous plait!" });
       return;
-    }else{
+    } else {
       this.subscriberService.getSubscriberById(this.subscriber.id_subscriber).subscribe(
-        (resultt:any)=>{
-          this.subscriber=resultt;
+        (resultt: any) => {
+          this.subscriber = resultt;
           console.log(resultt);
-          this.displayInfo=true;
+          this.displayInfo = true;
         },
         error => {
           console.log(error);
@@ -64,12 +64,12 @@ export class SubscriberComponent implements OnInit {
       )
     }
   }
- 
 
-  getServices(){
+
+  getServices() {
     this.subscriberService.getServices().subscribe(
-      (result:any)=>{
-        this.services=result;
+      (result: any) => {
+        this.services = result;
         console.log(result);
         console.log(result.id_service);
       },
@@ -80,10 +80,10 @@ export class SubscriberComponent implements OnInit {
     )
   }
 
-  getAbonnements(){
+  getAbonnements() {
     this.subscriberService.getAbonnements().subscribe(
-      (data:any)=>{
-        this.abonnements=data;
+      (data: any) => {
+        this.abonnements = data;
         console.log(data);
         console.log(data.id_abonnement);
       },
@@ -92,11 +92,11 @@ export class SubscriberComponent implements OnInit {
       }
     )
   }
-  
+
   showSaveDialog(edit: boolean) {
     if (edit) {
       if (this.subscriber != null && this.subscriber.id_subscriber != null) {
-        this.subscriber= this.subscriber;
+        this.subscriber = this.subscriber;
       } else {
         this.messageService.add({ severity: 'warn', summary: "Warning", detail: "séléctionnez un subscriebr s'il vous plait!" });
         return;
@@ -108,7 +108,7 @@ export class SubscriberComponent implements OnInit {
   }
 
   saveSubscriber() {
-    this.subscriberService.saveSubscriber(this.service,this.subscriber).subscribe(
+    this.subscriberService.saveSubscriber(this.service, this.subscriber).subscribe(
       (resultat: any) => {
         let subscriber = resultat as Subscriber;
         this.validerSubscriber(subscriber);
@@ -122,10 +122,10 @@ export class SubscriberComponent implements OnInit {
       }
     );
   }
- 
-  saveAbonnement(){
-    this.subscriberService.saveAbonnement(this.subscriber.id_subscriber,this.abonnement,this.subscriber).subscribe(
-      (donnees:any)=>{
+
+  saveAbonnement() {
+    this.subscriberService.saveAbonnement(this.subscriber.id_subscriber, this.abonnement, this.subscriber).subscribe(
+      (donnees: any) => {
         let subscriber = donnees as Subscriber;
         this.validerSubscriber(subscriber);
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'abonnment inséré' });
@@ -133,7 +133,20 @@ export class SubscriberComponent implements OnInit {
       }
     )
   }
-
+  show(id_subscriber:number) {
+    
+      this.subscriberService.getSubscriberById(this.subscriber.id_subscriber=id_subscriber).subscribe(
+        (resultt: any) => {
+          this.subscriber = resultt;
+          console.log(resultt);
+          this.detail = true;
+        },
+        error => {
+          console.log(error);
+        }
+      )
+    
+  }
   deleteSubscribers() {
     if (this.subscriber == null || this.subscriber.id_subscriber == null) {
       this.messageService.add({ severity: 'warn', summary: "Warning", detail: "séléctionnez un subscriebr s'il vous plait!" });
@@ -142,7 +155,7 @@ export class SubscriberComponent implements OnInit {
     this.confirmService.confirm({
       message: "Est-ce que vous voulez supprimez ce subscriber?",
       accept: () => {
-        this.subscriberService.deleteSubscribers(this.subscriber.id_subscriber,this.subscriber.service.id_service).subscribe(
+        this.subscriberService.deleteSubscribers(this.subscriber.id_subscriber, this.subscriber.service.id_service).subscribe(
           (resultat: any) => {
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'subscriber ' + resultat.id_subscriber + ' supprimé' });
             return this.subscriberService.getAll();
@@ -171,15 +184,15 @@ export class SubscriberComponent implements OnInit {
     }
   }
 
-  
 
-  
+
+
 
   ngOnInit() {
     this.getAll();
     this.getServices();
     this.getAbonnements();
-    
+
     this.cols = [
       { field: "nom_subscriber", header: "Nom" },
       { field: "prenom_subscriber", header: "Prénom" },
@@ -203,8 +216,8 @@ export class SubscriberComponent implements OnInit {
         command: () => this.deleteSubscribers()
       },
       {
-        label: "Afficher",
-        icon: 'pi pi-fw pi-exclamation-circle',
+        label: "Abonnement",
+        icon: 'pi pi-fw pi-reply',
         command: () => this.displaySubscriber()
       }
 

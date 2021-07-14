@@ -87,7 +87,7 @@ export class MaterielComponent implements OnInit {
       (data: any) => {
         let materiel = data as materiel;
         this.validerMateriel(materiel);
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'materiel affecté au subscriber'+data.subscriber_id });
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'materiel affecté au subscriber ' });
        
         this.displayInfo = false;
       }
@@ -156,7 +156,7 @@ export class MaterielComponent implements OnInit {
     this.cols = [
       { field: "serial_number", header: "Nombre serial" },
       { field: "nom", header: "Nom" },
-      { field: "model", header: "Modle" },
+      { field: "model", header: "Model" },
       { field: "description", header: "Description" },
       { field: "type", header: "Type" }
     ];

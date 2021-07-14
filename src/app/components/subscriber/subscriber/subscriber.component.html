@@ -2,13 +2,13 @@
     <p-toast></p-toast>
     <p-confirmDialog header="Confirmation" acceptLabel="Oui" rejectLabel="Non" icon="pi pi-exclamation-triangle">
     </p-confirmDialog>
-    <p-panel header="Gestion de subscribers" [style]="{'width':'80%'}">
+    <p-panel header="Gestion de subscribers" [style]="{'width':'95%'}">
         <div style="margin-bottom: 20px;">
             <p-menubar [model]="items"></p-menubar>
         </div>
         <p-table [value]="subscribers" [columns]="cols" selectionMode="single" [(selection)]="subscriber"
             dataKey="num_sim" [paginator]="true" [rows]="4">
-            
+
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns" [pSortableColumn]="col.field">
@@ -17,22 +17,25 @@
                             ariaLabelDesc="Activate to sort in descending order"
                             arialLabelAsc="Activate to sort in ascending order"></p-sortIcon>
                     </th>
-                    <th >
+                    <th>
                         Service
-                        <p-sortIcon  ariaLabel="Activate to sort"
-                            ariaLabelDesc="Activate to sort in descending order"
+                        <p-sortIcon ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order"
                             arialLabelAsc="Activate to sort in ascending order"></p-sortIcon>
                     </th>
                 </tr>
             </ng-template>
 
             <ng-template pTemplate="body" let-subscriber let-columns="columns">
-                <tr [pSelectableRow]="subscriber" >
+                <tr [pSelectableRow]="subscriber">
                     <td *ngFor="let col of columns">
                         {{subscriber[col.field]}}
                     </td>
                     <td>
                         {{subscriber.service.nom_service}}
+                    </td>
+                    <td>
+                        <button type="button" (click)="show(subscriber.id_subscriber)" pButton icon="pi pi-info-circle"
+                            label="Show"></button>
                     </td>
             </ng-template>
         </p-table>
@@ -81,12 +84,13 @@
                     </div>
                     <div class="ui-g-8">
                         <select class="ui-g-8" name="service" id="service" [(ngModel)]="service">
-                            <option *ngFor="let service of services" [ngValue]="service.id_service">{{service.nom_service}}</option>
+                            <option *ngFor="let service of services" [ngValue]="service.id_service">
+                                {{service.nom_service}}</option>
                         </select>
                     </div>
                 </div>
             </div>
-            
+
             <div class="ui-g ui-fluid">
                 <div class="ui-g-12">
                     <div class="ui-g-4">
@@ -107,37 +111,28 @@
         </p-footer>
     </p-dialog>
 
-    <p-dialog header="Information subscriber" [responsive]="true" [(visible)]="displayInfo"
+    <p-dialog header="Donner abonnement au subscriber" [responsive]="true" [(visible)]="displayInfo"
         [style]="{'width': '300px', 'background':'hsl(210deg 90% 75%)'}" [modal]="true" styleClass="p-fluid">
 
         <ng-template pTemplate="content">
 
-           <b>Nom:</b> {{subscriber.nom_subscriber}}
-           <br>
-           <b>Prenom:</b> {{subscriber.prenom_subscriber}}
-           <br>
-           <b>Numéro sim:</b> {{subscriber.num_sim}}
-           <br>
-           <b>Service:</b>{{subscriber.service.nom_service}}
-           <br>
-           <b>Fonction:</b> {{subscriber.fonction}}
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="abonnement"><b>Abonnement:</b>
+                            <div *ngIf="subscriber.abonnement!=null">{{subscriber.abonnement.type}}</div>
+                        </label>
+                    </div>
 
-           <div class="ui-g ui-fluid">
-            <div class="ui-g-12">
-                <div class="ui-g-4">
-                    <label for="abonnement"><b>Abonnement:</b>
-                        <div *ngIf="subscriber.abonnement!=null">{{subscriber.abonnement.type}}</div>
-                    </label>
-                </div>
-                
-                <div class="ui-g-8">
-                    <select class="ui-g-8" name="abonnement" id="abonnement" [(ngModel)]="abonnement">
-                        <option *ngFor="let abonnement of abonnements" [ngValue]="abonnement.id_abonnement">{{abonnement.type}}</option>
-                    </select>
+                    <div class="ui-g-8">
+                        <select class="ui-g-8" name="abonnement" id="abonnement" [(ngModel)]="abonnement">
+                            <option *ngFor="let abonnement of abonnements" [ngValue]="abonnement.id_abonnement">
+                                {{abonnement.type}}</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-        </div>
-                  
+
         </ng-template>
         <p-footer>
             <div class="ui-dialog-buttonpane ui-helper-clearfix">
@@ -146,5 +141,30 @@
         </p-footer>
     </p-dialog>
 
-    
+
+    <p-dialog header="Informations Subscriber" [responsive]="true" [(visible)]="detail"
+        [style]="{'width': '400px', 'background':'hsl(210deg 90% 75%)'}" [modal]="true" styleClass="p-fluid">
+
+        <ng-template pTemplate="content">
+
+                <div class="infos">
+                    <h2 style="color:#86bff9;">
+                        {{subscriber.nom_subscriber}}
+                        {{subscriber.prenom_subscriber}}
+                    </h2>
+                    <b>Numéro sim:</b><i>{{subscriber.num_sim}}</i>
+                    <br>
+                    <b>Fonction:</b><i>{{subscriber.fonction}}</i>
+                    <br>
+                    <b>Service:</b><i>{{subscriber.service.nom_service}}</i>
+                    <br>
+                    <b>Date de création:</b><i>{{subscriber.date_creation}}</i>
+                    <br>
+                    <b>Abonnement:</b><i>{{subscriber.abonnement.tarif}}</i>
+                    <br>
+                    <b>Matèriel:</b><!--i>{{materiel.nom}}</i-->
+                </div>
+
+        </ng-template>
+    </p-dialog>
 </div>

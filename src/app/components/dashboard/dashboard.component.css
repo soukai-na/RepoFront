@@ -7,12 +7,22 @@ h5{
     color: #86bff9;
 }
 h5 a {
-    color: #86bff9;
+    color: white;
     text-decoration: blink;
 }
 h5 a:hover{
     color: #899aac;
+    
 }
 .p-field.p-col-12.p-md-4 {
     margin-right: 95px;
+}
+.p-field.p-col-12.p-md-4 {
+    margin-right: 95px;
+    border: 1px solid #86bff9;
+    padding: 16px;
+    background: #86bff9;
+    color: white;
+    border-radius: 40px;
+    box-shadow: 12px 12px 12px rgba(109, 164, 231, 0.2);
 }

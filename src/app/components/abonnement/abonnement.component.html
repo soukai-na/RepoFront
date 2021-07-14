@@ -32,35 +32,42 @@
             <div class="ui-g ui-fluid">
                 <div class="ui-g-12">
                     <div class="ui-g-4">
-                        <label for="type">Type</label>
+                        <label for="fonction">Tarif</label>
                     </div>
                     <div class="ui-g-8">
-                        <input pInputText id="type" [(ngModel)]="abonnement.type" required/>
+                        <select class="ui-g-8" name="tarif" id="tarif" [(ngModel)]="Tarif">
+                            <option *ngFor="let unTarif of Tarif" [ngValue]="unTarif">{{unTarif}}</option>
+                        </select> 
+                    </div>
+                </div>
+                {{Tarif}}
+            </div>
+
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="fonction">Type Forfait</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <select class="ui-g-8" name="type_forfait" id="type_forfait" [(ngModel)]="Type_forfait">
+                            <option *ngFor="let type of Type_forfait" [ngValue]="type.id">{{type.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="fonction">Solde</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <select class="ui-g-8" name="solde" id="solde" [(ngModel)]="Soldes">
+                            <option *ngFor="let solde of Soldes" [ngValue]="solde.id">{{solde.name}}</option>
+                        </select>
                     </div>
                 </div>
             </div>
 
-           <div class="ui-g ui-fluid">
-                <div class="ui-g-12">
-                    <div class="ui-g-4">
-                        <label for="tarif">Tarif</label>
-                    </div>
-                    <div class="ui-g-8">
-                        <input pInputText id="tarif" [(ngModel)]="abonnement.tarif" required/>
-                    </div>
-                </div>
-            </div>
-
-           <div class="ui-g ui-fluid">
-                <div class="ui-g-12">
-                    <div class="ui-g-4">
-                        <label for="type_forfait">Type forfait</label>
-                    </div>
-                    <div class="ui-g-8">
-                        <input pInputText id="type_forfait" [(ngModel)]="abonnement.type_forfait" required/>
-                    </div>
-                </div>
-            </div>
         </ng-template>
         <p-footer>
             <div class="ui-dialog-buttonpane ui-helper-clearfix">

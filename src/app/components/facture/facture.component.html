@@ -32,7 +32,7 @@
                         {{facture[col.field]}}
                     </td>
                     <td>
-                        {{facture.subscriber.num_sim}}
+                        {{facture.subscriber.nom_subscriber}} {{facture.subscriber.prenom_subscriber}}
                     </td>
             </ng-template>
         </p-table>
@@ -59,6 +59,8 @@
                     <p-calendar inputId="date_facture" [(ngModel)]="facture.date_facture"></p-calendar>
                 </div>
             </div>
+
+            
 
             <div class="ui-g ui-fluid">
                 <div class="ui-g-12">

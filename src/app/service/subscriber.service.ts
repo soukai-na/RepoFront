@@ -43,5 +43,7 @@ export class SubscriberService {
     return this.http.get(this.baseURL + "subscribers/" + id_subscriber);
   }
 
-
+  getMateriels(id_materiel:number){
+    return this.http.get(this.baseURL+"materiels/"+id_materiel);
+  }
 }

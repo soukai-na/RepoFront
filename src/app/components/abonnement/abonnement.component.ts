@@ -17,6 +17,17 @@ export class AbonnementComponent implements OnInit {
   cols: any[] = [];
   items: MenuItem[] = [];
   displaySaveDialog: boolean = false;
+  Tarif:string[]=["Forfait optimis plafonné","Forfait optimis 30H + 15Go","Forfait Inta-entreprise","Abonnement internet mobile"];
+  Type_forfait=[
+    {id:1,name:"30 H"},
+    {id:2,name:"30H +15Go"},
+    {id:3,name:"Forfait 5H + 5Go"},
+    {id:4,name:"modem"}
+  ];
+  Soldes=[
+    {id:1,name:"DATA"},
+    {id:2,name:"GSM"}
+  ]
 
   getAll() {
     this.abonnementService.getAll().subscribe(
@@ -97,10 +108,13 @@ export class AbonnementComponent implements OnInit {
   
   ngOnInit() {
     this.getAll();
+    this.Tarif;
+    this.Type_forfait;
+    this.Soldes;
     this.cols=[
-      { field: "type", header: "Type" },    
-      { field: "tarif", header: "Tarif" }, 
-      { field: "type_forfait", header: "Type Forfait" }
+      { field: "tarif", header: "Tarif" },    
+      { field: "type_forfait", header: "Type forfait" }, 
+      { field: "solde", header: "Solde" }
     ];
     this.items = [
       {
