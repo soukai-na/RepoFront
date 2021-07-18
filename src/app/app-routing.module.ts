@@ -11,6 +11,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { ServiceMichocComponent } from './components/service-michoc/service-michoc.component';
 import { SubscriberComponent } from './components/subscriber/subscriber/subscriber.component';
 
+
 const routes: Routes = [
   { path: 'login', component: AuthComponent },
   { path: 'subscribers', component: SubscriberComponent },

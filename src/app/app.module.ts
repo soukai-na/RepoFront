@@ -38,6 +38,7 @@ import {KnobModule} from 'primeng/knob';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HistoriqueComponent } from './components/historique/historique.component';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import {BreadcrumbModule} from 'primeng/breadcrumb';
 
 @NgModule({
   declarations: [
@@ -78,8 +79,8 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
     SelectButtonModule,
     InputMaskModule,
     KnobModule,
-    DynamicDialogModule
-    
+    DynamicDialogModule,
+    BreadcrumbModule
   ],
   providers: [
     MessageService,

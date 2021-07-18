@@ -1,22 +1,25 @@
 <div class="ui-g">
     <p-toast></p-toast>
-    <p-confirmDialog header="Confirmation" acceptLabel="Oui" rejectLabel="Non" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <p-confirmDialog header="Confirmation" acceptLabel="Oui" rejectLabel="Non" icon="pi pi-exclamation-triangle">
+    </p-confirmDialog>
     <p-panel header="Gestion d'abonnements" [style]="{'width':'80%'}">
         <div style="margin-bottom: 20px;">
             <p-menubar [model]="items"></p-menubar>
         </div>
-        <p-table [value]="abonnements" [columns]="cols" selectionMode="single" [(selection)]="abonnement" 
-        dataKey="id_abonnement" [paginator]="true" [rows]="4" >
+        <p-table [value]="abonnements" [columns]="cols" selectionMode="single" [(selection)]="abonnement"
+            dataKey="id_abonnement" [paginator]="true" [rows]="4">
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns" [pSortableColumn]="col.field">
                         {{col.header}}
-                        <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" arialLabelAsc="Activate to sort in ascending order" ></p-sortIcon>
+                        <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+                            ariaLabelDesc="Activate to sort in descending order"
+                            arialLabelAsc="Activate to sort in ascending order"></p-sortIcon>
                     </th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-abonnement let-columns="columns">
-                <tr [pSelectableRow]="abonnement"> 
+                <tr [pSelectableRow]="abonnement">
                     <td *ngFor="let col of columns">
                         {{abonnement[col.field]}}
                     </td>
@@ -28,45 +31,50 @@
         [style]="{'width': '300px', 'background':'hsl(210deg 90% 75%)'}" [modal]="true" styleClass="p-fluid">
 
         <ng-template pTemplate="content">
-
             <div class="ui-g ui-fluid">
                 <div class="ui-g-12">
                     <div class="ui-g-4">
-                        <label for="fonction">Tarif</label>
+                        <label for="tarif">Tarif</label>
                     </div>
                     <div class="ui-g-8">
-                        <select class="ui-g-8" name="tarif" id="tarif" [(ngModel)]="Tarif">
-                            <option *ngFor="let unTarif of Tarif" [ngValue]="unTarif">{{unTarif}}</option>
-                        </select> 
-                    </div>
-                </div>
-                {{Tarif}}
-            </div>
-
-            <div class="ui-g ui-fluid">
-                <div class="ui-g-12">
-                    <div class="ui-g-4">
-                        <label for="fonction">Type Forfait</label>
-                    </div>
-                    <div class="ui-g-8">
-                        <select class="ui-g-8" name="type_forfait" id="type_forfait" [(ngModel)]="Type_forfait">
-                            <option *ngFor="let type of Type_forfait" [ngValue]="type.id">{{type.name}}</option>
+                        <select class="ui-g-8" name="tarif" id="tarif" [(ngModel)]="abonnement.tarif">
+                            <option *ngFor="let Tarif of Tarifs" [ngValue]="Tarif.name">{{Tarif.name}}</option>
                         </select>
                     </div>
                 </div>
             </div>
+            {{selectedTarif}}
+
             <div class="ui-g ui-fluid">
                 <div class="ui-g-12">
                     <div class="ui-g-4">
-                        <label for="fonction">Solde</label>
+                        <label for="type_forfait">Type Forfait</label>
                     </div>
                     <div class="ui-g-8">
-                        <select class="ui-g-8" name="solde" id="solde" [(ngModel)]="Soldes">
-                            <option *ngFor="let solde of Soldes" [ngValue]="solde.id">{{solde.name}}</option>
+                        <select class="ui-g-8" name="type_forfait" id="type_forfait" [(ngModel)]="abonnement.type_forfait">
+                            <option *ngFor="let Type_forfait of Types_forfait" [ngValue]="Type_forfait.name">
+                                {{Type_forfait.name}}</option>
                         </select>
                     </div>
                 </div>
             </div>
+            {{selectedType}}
+
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="solde">Solde</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <select class="ui-g-8" name="solde" id="solde" [(ngModel)]="abonnement.solde">
+                            <option *ngFor="let Solde of Soldes" [ngValue]="Solde.name">{{Solde.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            {{selectedSolde}}
+
+
 
         </ng-template>
         <p-footer>

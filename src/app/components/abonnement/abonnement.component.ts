@@ -10,25 +10,45 @@ import { AbonnementService } from 'src/app/service/abonnement.service';
 })
 export class AbonnementComponent implements OnInit {
 
-  constructor(private abonnementService: AbonnementService, private messageService: MessageService, private confirmService: ConfirmationService) { }
+  constructor(private abonnementService: AbonnementService, private messageService: MessageService, private confirmService: ConfirmationService) 
+  {
+    this.Tarifs=[
+      {id:1,name:"Forfait optimis plafonné"},
+      {id:2,name:"Forfait optimis 30H + 15Go"},
+      {id:3,name:"Forfait Inta-entreprise"},
+      {id:4,name:"Abonnement internet mobile"}
+    ];
+    this.Types_forfait=[
+      {id:1,name:"30H"},
+      {id:2,name:"30H +15Go"},
+      {id:3,name:"Forfait 5H + 5Go"},
+      {id:4,name:"modem"}
+    ];
+    this.Soldes=[
+      {id:1,name:"GSM"},
+      {id:2,name:"DATA"}
+    ]
+
+   }
 
   abonnements!: Abonnement[];
   abonnement!: Abonnement;
   cols: any[] = [];
   items: MenuItem[] = [];
   displaySaveDialog: boolean = false;
-  Tarif:string[]=["Forfait optimis plafonné","Forfait optimis 30H + 15Go","Forfait Inta-entreprise","Abonnement internet mobile"];
-  Type_forfait=[
-    {id:1,name:"30 H"},
-    {id:2,name:"30H +15Go"},
-    {id:3,name:"Forfait 5H + 5Go"},
-    {id:4,name:"modem"}
-  ];
-  Soldes=[
-    {id:1,name:"DATA"},
-    {id:2,name:"GSM"}
-  ]
 
+  selectedTarif!:string;
+  Tarifs:any[]=[];
+  selectedType!:string;
+  Types_forfait:any[]=[];
+  selectedSolde!:string;
+  Soldes:any[]=[];
+
+  /*
+  Tarifs:string[]=["Forfait optimis plafonné","Forfait optimis 30H + 15Go","Forfait Inta-entreprise","Abonnement internet mobile"];
+  Types_forfait:string[]=["30 H","30H +15Go","Forfait 5H + 5Go","modem"];
+  Soldes:string[]=["DATA","GSM"];
+*/
   getAll() {
     this.abonnementService.getAll().subscribe(
      
@@ -64,6 +84,7 @@ export class AbonnementComponent implements OnInit {
         this.validerAbonnement(abonnement);
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Abonnement inséré' });
         this.displaySaveDialog = false;
+        console.log(resultat);
       },
       error => {
         console.log(error);
@@ -108,8 +129,8 @@ export class AbonnementComponent implements OnInit {
   
   ngOnInit() {
     this.getAll();
-    this.Tarif;
-    this.Type_forfait;
+    this.Tarifs;
+    this.Types_forfait;
     this.Soldes;
     this.cols=[
       { field: "tarif", header: "Tarif" },    

@@ -34,7 +34,7 @@
                         {{subscriber.service.nom_service}}
                     </td>
                     <td>
-                        <button type="button" (click)="show(subscriber.id_subscriber)" pButton icon="pi pi-info-circle"
+                        <button type="button" (click)="show()" pButton icon="pi pi-info-circle"
                             label="Show"></button>
                     </td>
             </ng-template>
@@ -127,7 +127,7 @@
                     <div class="ui-g-8">
                         <select class="ui-g-8" name="abonnement" id="abonnement" [(ngModel)]="abonnement">
                             <option *ngFor="let abonnement of abonnements" [ngValue]="abonnement.id_abonnement">
-                                {{abonnement.type}}</option>
+                                {{abonnement.tarif}}</option>
                         </select>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
 
 
     <p-dialog header="Informations Subscriber" [responsive]="true" [(visible)]="detail"
-        [style]="{'width': '400px', 'background':'hsl(210deg 90% 75%)'}" [modal]="true" styleClass="p-fluid">
+        [style]="{'width': '470px', 'background':'hsl(210deg 90% 75%)'}" [modal]="true" styleClass="p-fluid">
 
         <ng-template pTemplate="content">
 
@@ -158,9 +158,10 @@
                     <br>
                     <b>Service:</b><i>{{subscriber.service.nom_service}}</i>
                     <br>
-                    <b>Date de création:</b><i>{{subscriber.date_creation}}</i>
+                    <b>Date de création:</b><i>{{subscriber.date_creation | date:'short'}}</i>
+                    
                     <br>
-                    <b>Abonnement:</b><i>{{subscriber.abonnement.tarif}}</i>
+                    <b>Abonnement:</b><i *ngIf="subscriber.abonnement!=null">{{subscriber.abonnement.tarif}}</i>
                     <br>
                     <b>Matèriel:</b><!--i>{{materiel.nom}}</i-->
                 </div>

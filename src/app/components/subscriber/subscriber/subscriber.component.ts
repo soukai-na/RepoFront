@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 import { service_michoc } from 'src/app/model/service-michoc';
 import { Subscriber } from 'src/app/model/subscriber';
+import { MaterielService } from 'src/app/service/materiel.service';
 import { ServiceMichocService } from 'src/app/service/service-michoc.service';
 import { SubscriberService } from 'src/app/service/subscriber.service';
 
@@ -24,10 +25,16 @@ export class SubscriberComponent implements OnInit {
   abonnements: any;
   abonnement: any;
   detail:boolean=false;
+  materiels:any;
+  materiel:any;
 
 
 
-  constructor(private subscriberService: SubscriberService, private serviceMichocService: ServiceMichocService, private messageService: MessageService, private confirmService: ConfirmationService) {
+  constructor(private subscriberService: SubscriberService, 
+    private serviceMichocService: ServiceMichocService, 
+    private materielService:MaterielService,
+    private messageService: MessageService, 
+    private confirmService: ConfirmationService) {
   }
 
 
@@ -93,6 +100,10 @@ export class SubscriberComponent implements OnInit {
     )
   }
 
+  getMateriel(){
+   // this.subscriberService.getMateriels(this.materiels.id_materiel).subscribe
+  }
+
   showSaveDialog(edit: boolean) {
     if (edit) {
       if (this.subscriber != null && this.subscriber.id_subscriber != null) {
@@ -133,9 +144,9 @@ export class SubscriberComponent implements OnInit {
       }
     )
   }
-  show(id_subscriber:number) {
+  show() {
     
-      this.subscriberService.getSubscriberById(this.subscriber.id_subscriber=id_subscriber).subscribe(
+      this.subscriberService.getSubscriberById(this.subscriber.id_subscriber).subscribe(
         (resultt: any) => {
           this.subscriber = resultt;
           console.log(resultt);

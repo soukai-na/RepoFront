@@ -177,7 +177,7 @@ export class MaterielComponent implements OnInit {
         command: () => this.deleteMateriels()
       },
       {
-        label: "Donner materiel",
+        label: "Affecter materiel",
         icon: 'pi pi-fw pi-reply',
         command: () => this.displayMateriel()
       }

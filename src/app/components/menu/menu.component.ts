@@ -12,10 +12,15 @@ export class MenuComponent implements OnInit {
   
 
     items!: MenuItem[];
+    collapse=false;
     constructor(
       private route: ActivatedRoute,
-    ) {}
- 
+    ) {
+      
+    }
+ sildeBar(){
+   this.collapse=!this.collapse;
+ }
     
 
     ngOnInit() {

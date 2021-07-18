@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 import { Abonnement } from 'src/app/model/abonnement';
 import { materiel } from 'src/app/model/materiel';
 import { service_michoc } from 'src/app/model/service-michoc';
@@ -15,6 +16,7 @@ import { SubscriberService } from 'src/app/service/subscriber.service';
 })
 export class DashboardComponent implements OnInit {
 
+  
   
   subscribers!:Subscriber[];
   services!:service_michoc[];
@@ -77,6 +79,7 @@ export class DashboardComponent implements OnInit {
     this.getServices();
     this.getAbonnements();
     this.getMateriels();
+
   }
 
 }
