@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AbonnementComponent } from './components/abonnement/abonnement.component';
+import { AccueilComponent } from './components/accueil/accueil.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FactureComponent } from './components/facture/facture.component';
@@ -22,7 +23,9 @@ const routes: Routes = [
   { path: 'abonnements', component: AbonnementComponent },
   { path: 'factures', component: FactureComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'historiques', component: HistoriqueComponent }
+  { path: 'historiques', component: HistoriqueComponent },
+  { path: '', component: AccueilComponent }
+
 ];
 
 @NgModule({

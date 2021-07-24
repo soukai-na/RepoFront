@@ -7,24 +7,36 @@ body{
     width: 297px;
 }
 .p-panel .p-panel-header{
-    background-color: #86bff9 !important; 
+    background-color: #87cace !important; 
     color: #f8f9fa !important;
     font-size: 24px !important;
 }
 .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link .p-menuitem-icon {
-    color: #86bff9 !important;
+    color: #87cace !important;
 }
 .p-menubar {
     
-    border: 1px solid #86bff9 !important;
+    border: 1px solid #87cace !important;
 }
 .p-panel .p-panel-content {
-    border: 1px solid #86bff9 !important;
+    border: 1px solid #87cace !important;
 }
 
 
-a.p-panelmenu-header-link.ng-tns-c113-0.ng-star-inserted.p-menuitem-link-active{
+a.p-panelmenu-header-link.ng-tns-c115-0.ng-star-inserted.p-menuitem-link-active{
     background: white !important;
     font-style: italic;
-    color: #86bff9;
+    color: #87cace;
+}
+footer{
+    text-align: center;
+    margin-top: 30px;
+    background: #dee2e6;
+    color: #488fda;
+    padding: 10px;
+    margin-right: 0px !important;
+    margin-bottom:0px !important;
+} 
+.p-menubar.p-component{
+    padding: 0px !important;
 }

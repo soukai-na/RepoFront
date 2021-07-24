@@ -1,14 +1,17 @@
-*{
-    margin-right: 920px;
-}
+
 app-menu{
     margin-left:0px;
 }
 .p-panel .p-panel-header{
-    background-color: #86bff9;
+    background-color: #87cace;
 }
 
 body{
     background-image: url("https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-08.jpg") !important;
 
+}
+
+
+.p-breadcrumb.p-component{
+    margin-bottom: 40px !important;
 }

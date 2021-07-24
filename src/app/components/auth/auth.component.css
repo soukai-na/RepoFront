@@ -9,11 +9,11 @@
 }
 *{
     text-align: center !important;
-    border-color: #86bff9 !important;
+    border-color: #87cace !important;
     
 }
 .p-password {
-    border: 1px solid #86bff9 !important;
+    border: 1px solid #87cace !important;
 }
 body{
     background-image: url("https://assets.codepen.io/361089/internal/screenshots/pens/ZQJyeq.default.png?fit=cover&format=auto&ha=true&height=719&quality=75&v=2&version=1453997785&width=1279") !important;
@@ -22,12 +22,12 @@ body{
 }
 .p-button.p-button-success, .p-buttonset.p-button-success > .p-button, .p-splitbutton.p-button-success > .p-button {
     color: #ffffff;
-    background: #86bff9;
-    border: 1px solid #86bff9;
+    background: #87cace;
+    border: 1px solid #87cace;
     margin-top: 40px;
 }
 .auth{
-    border: 2px solid #86bff9 !important;
+    border: 2px solid #87cace !important;
     width: 334px;
     height: 400px;
     margin-left: 500px;
@@ -39,10 +39,10 @@ h3{
     font-family: monospace;
     font-weight: bold;
     font-size: 30px;
-    color: #86bff9;
+    color: #87cace;
 }
 
 .pi{
-    color: #86bff9 !important;
+    color: #87cace !important;
     font-size: 30px !important;
 }

@@ -39,6 +39,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HistoriqueComponent } from './components/historique/historique.component';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
+import { AccueilComponent } from './components/accueil/accueil.component';
+import {FieldsetModule} from 'primeng/fieldset';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import {BreadcrumbModule} from 'primeng/breadcrumb';
     AbonnementComponent,
     FactureComponent,
     DashboardComponent,
-    HistoriqueComponent
+    HistoriqueComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +83,8 @@ import {BreadcrumbModule} from 'primeng/breadcrumb';
     InputMaskModule,
     KnobModule,
     DynamicDialogModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    FieldsetModule
   ],
   providers: [
     MessageService,

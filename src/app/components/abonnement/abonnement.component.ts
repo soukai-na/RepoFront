@@ -15,7 +15,7 @@ export class AbonnementComponent implements OnInit {
     this.Tarifs=[
       {id:1,name:"Forfait optimis plafonné"},
       {id:2,name:"Forfait optimis 30H + 15Go"},
-      {id:3,name:"Forfait Inta-entreprise"},
+      {id:3,name:"Forfait intra-entreprise"},
       {id:4,name:"Abonnement internet mobile"}
     ];
     this.Types_forfait=[
@@ -27,7 +27,7 @@ export class AbonnementComponent implements OnInit {
     this.Soldes=[
       {id:1,name:"GSM"},
       {id:2,name:"DATA"}
-    ]
+    ];
 
    }
 
@@ -45,7 +45,7 @@ export class AbonnementComponent implements OnInit {
   Soldes:any[]=[];
 
   /*
-  Tarifs:string[]=["Forfait optimis plafonné","Forfait optimis 30H + 15Go","Forfait Inta-entreprise","Abonnement internet mobile"];
+  Tarifs:string[]=["Forfait optimis plafonné","Forfait optimis 30H + 15Go","Forfait intra-entreprise","Abonnement internet mobile"];
   Types_forfait:string[]=["30 H","30H +15Go","Forfait 5H + 5Go","modem"];
   Soldes:string[]=["DATA","GSM"];
 */

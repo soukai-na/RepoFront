@@ -41,7 +41,7 @@
         </p-table>
     </p-panel>
     <p-dialog header="Nouveau subscriber" [responsive]="true" [(visible)]="displaySaveDialog"
-        [style]="{'width': '300px', 'background':'hsl(210deg 90% 75%)'}" [modal]="true" styleClass="p-fluid">
+        [style]="{'width': '300px', 'background':'hsl(210deg 67% 56%)'}" [modal]="true" styleClass="p-fluid">
 
         <ng-template pTemplate="content">
 
@@ -112,7 +112,7 @@
     </p-dialog>
 
     <p-dialog header="Donner abonnement au subscriber" [responsive]="true" [(visible)]="displayInfo"
-        [style]="{'width': '300px', 'background':'hsl(210deg 90% 75%)'}" [modal]="true" styleClass="p-fluid">
+        [style]="{'width': '300px', 'background':'hsl(210deg 67% 56%)'}" [modal]="true" styleClass="p-fluid">
 
         <ng-template pTemplate="content">
 
@@ -143,27 +143,38 @@
 
 
     <p-dialog header="Informations Subscriber" [responsive]="true" [(visible)]="detail"
-        [style]="{'width': '470px', 'background':'hsl(210deg 90% 75%)'}" [modal]="true" styleClass="p-fluid">
+        [style]="{'width': '470px', 'background':'hsl(210deg 67% 56%)'}" [modal]="true" styleClass="p-fluid">
 
         <ng-template pTemplate="content">
 
                 <div class="infos">
-                    <h2 style="color:#86bff9;">
+                    <i class="pi pi-user" style="font-size: 3rem;color: #ffffff;background: #87cace;padding: 10px;border-radius: 40px;"></i>
+                    <h2 style="color:#87cace;">
                         {{subscriber.nom_subscriber}}
                         {{subscriber.prenom_subscriber}}
                     </h2>
-                    <b>Numéro sim:</b><i>{{subscriber.num_sim}}</i>
-                    <br>
-                    <b>Fonction:</b><i>{{subscriber.fonction}}</i>
-                    <br>
-                    <b>Service:</b><i>{{subscriber.service.nom_service}}</i>
-                    <br>
-                    <b>Date de création:</b><i>{{subscriber.date_creation | date:'short'}}</i>
-                    
-                    <br>
-                    <b>Abonnement:</b><i *ngIf="subscriber.abonnement!=null">{{subscriber.abonnement.tarif}}</i>
-                    <br>
-                    <b>Matèriel:</b><!--i>{{materiel.nom}}</i-->
+                    <table class="myTab" style="width: 380px;">
+                        <tr>
+                        <th>Numéro sim</th>
+                        <th>{{subscriber.num_sim}}</th>
+                        </tr>
+                        <tr>
+                        <th>Fonction</th>
+                        <th>{{subscriber.fonction}}</th>
+                        </tr>
+                        <tr>
+                        <th>Service</th>
+                        <th>{{subscriber.service.nom_service}}</th>
+                        </tr>
+                        <tr>
+                        <th>Date de création</th>
+                        <th>{{subscriber.date_creation | date:'short'}}</th>
+                        </tr>
+                        <tr>
+                        <th>Abonnement</th>
+                        <th>{{subscriber.abonnement.tarif}}</th>
+                        </tr>
+                        </table>
                 </div>
 
         </ng-template>

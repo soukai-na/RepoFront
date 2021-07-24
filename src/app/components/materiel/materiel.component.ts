@@ -22,6 +22,7 @@ export class MaterielComponent implements OnInit {
   value1: string="off";
   subscribers: any;
   subscriber: any;
+  Justifications:any[]=[];
 
   constructor(
     private materielService: MaterielService,
@@ -29,6 +30,13 @@ export class MaterielComponent implements OnInit {
     private confirmService: ConfirmationService
   ) {
     this.stateOptions = [{ label: 'Off', value: 'off' }];
+    
+    this.Justifications=[
+      {id:1,name:"Simple Affectation"},
+      {id:2,name:"Simple Changement"},
+      {id:3,name:"Matériel Endommagé"},
+      {id:4,name:"Matériel volé"}
+    ]
   }
 
   getAll() {
@@ -152,6 +160,7 @@ export class MaterielComponent implements OnInit {
   ngOnInit() {
     this.getAll();
     this.getSubscriber();
+    this.Justifications;
     
     this.cols = [
       { field: "serial_number", header: "Nombre serial" },

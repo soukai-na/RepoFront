@@ -1,11 +1,12 @@
 <div class="p-d-flex">
-    <i class='pi pi-fw pi-home' style="margin-right: 500px;font-size: 2rem;"></i>
+    <a href="http://localhost:4200"><i class='pi pi-fw pi-home' style="margin-right: 500px;font-size: 2rem;"></i></a>
     <span>Float IAM</span>
     <div class="p-grid">
         <div class="p-col-12 p-md-4">
             <div class="card">
-                <p-avatar  icon="pi pi-user" pBadge value="4"   severity="success" styleClass="p-mr-2" size="large">
-                </p-avatar>
+                <p-menubar class="user" [model]="items">
+                    
+                </p-menubar>
             </div>
         </div>
     </div>

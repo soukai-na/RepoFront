@@ -1,7 +1,7 @@
 .p-panel .p-panel-header {
     border: 1px solid #dee2e6;
     padding: 1rem;
-    background: #86bff9;
+    background: #87cace;
     color: #f8f9fa;
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;
@@ -16,11 +16,15 @@ b{
     margin: 10px !important;
 }
 .infos{
-    border: 1px solid #86bff9 !important;
+    border: 1px solid #87cace !important;
     padding: 20px;
     padding-bottom: 60px;
     border-top-left-radius: 70px;
     border-bottom-right-radius: 70px;
     box-shadow: 5px 14px 10px 0px #6c757d66;
+    text-align: center;
 
+}
+.myTab th{
+    border-bottom: 2px solid #87cace !important;
 }

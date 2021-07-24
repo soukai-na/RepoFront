@@ -45,7 +45,7 @@
         </p-table>
     </p-panel>
     <p-dialog header="Nouveau materiel" [responsive]="true" [(visible)]="displaySaveDialog"
-        [style]="{'width': '300px', 'background':'hsl(210deg 90% 75%)'}" [modal]="true" styleClass="p-fluid">
+        [style]="{'width': '300px', 'background':'hsl(210deg 67% 56%)'}" [modal]="true" styleClass="p-fluid">
 
         <ng-template pTemplate="content">
 
@@ -116,7 +116,7 @@
     </p-dialog>
 
     <p-dialog header="Information subscriber" [responsive]="true" [(visible)]="displayInfo"
-        [style]="{'width': '300px', 'background':'hsl(210deg 90% 75%)'}" [modal]="true" styleClass="p-fluid">
+        [style]="{'width': '300px', 'background':'hsl(210deg 67% 56%)'}" [modal]="true" styleClass="p-fluid">
 
         <ng-template pTemplate="content">
 
@@ -135,7 +135,7 @@
                         <select class="ui-g-8" name="subscriber" id="subscriber" [(ngModel)]="subscriber">
                             <option [ngValue]="null">No one</option>
                             <option *ngFor="let subscriber of subscribers" [ngValue]="subscriber.id_subscriber">
-                                {{subscriber.num_sim}}</option>
+                                {{subscriber.nom_subscriber}} {{subscriber.prenom_subscriber}}</option>
                         </select>
                     </div>
                 </div>
@@ -144,18 +144,16 @@
             <div class="ui-g ui-fluid">
                 <div class="ui-g-12">
                     <div class="ui-g-4">
-                        <label for="abonnement"><b>Motif:</b></label>
+                        <label for="justification"><b>Justification</b></label>
+                        <div *ngIf="materiel.justification!=null">{{materiel.justification}}</div>
                     </div>
                     <div class="ui-g-8">
-                        <select class="ui-g-8" name="subscriber" id="subscriber" editable="true" [(ngModel)]="subscriber">
-                            <option [ngValue]="null">No one</option>
-                            <option *ngFor="let subscriber of subscribers" [ngValue]="subscriber.id_subscriber">
-                                {{subscriber.num_sim}}</option>
+                        <select class="ui-g-8" name="justification" id="justification" [(ngModel)]="materiel.justification">
+                            <option *ngFor="let Justification of Justifications" [ngValue]="Justification.name">{{Justification.name}}</option>
                         </select>
                     </div>
                 </div>
             </div>
-
 
         </ng-template>
         <p-footer>

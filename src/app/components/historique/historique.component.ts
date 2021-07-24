@@ -51,8 +51,7 @@ export class HistoriqueComponent implements OnInit {
 
     this.cols = [
       { field: "id_action", header: "Action" },
-      { field: "date_action", header: "Date action" },
-      { field: "motif", header: "Motif" }
+      { field: "date_action", header: "Date action" }
       
     ];
   }

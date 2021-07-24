@@ -4,7 +4,7 @@ h5{
     margin-top: 5px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     
-    color: #86bff9;
+    color: #87cace;
 }
 h5 a {
     color: white;
@@ -19,9 +19,9 @@ h5 a:hover{
 }
 .p-field.p-col-12.p-md-4 {
     margin-right: 95px;
-    border: 1px solid #86bff9;
+    border: 1px solid #87cace;
     padding: 16px;
-    background: #86bff9;
+    background: #87cace;
     color: white;
     border-radius: 40px;
     box-shadow: 12px 12px 12px rgba(109, 164, 231, 0.2);

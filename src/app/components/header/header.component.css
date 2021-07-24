@@ -2,7 +2,7 @@
     padding: 10px;
     font-size: 31px;
     font-style: oblique;
-    background: hsl(210deg 90% 75%);
+    background: hsl(210deg 67% 56%);
     color: #f8f9fa;
     width: 1349px;
     height: 70px;
@@ -12,10 +12,27 @@
     position:fixed;
     padding-left: 35px;
 }
+i.pi.pi-fw.pi-home {
+    color: white;
+    cursor: pointer;
+}
 
-p-avatar {
+p-menubar {
     float: right !important;
     margin-right: 60px !important;
     margin-top: -39px !important;
-    color: #86bff9 !important;
+    color: #87cace !important;
+}
+
+
+element.style {
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+}
+
+.p-menubar.p-component{
+    padding: 0px !important;
+    height: 48px !important;
 }

@@ -1,0 +1,19 @@
+img{
+    height: 230px;
+    margin-left: 270px;
+}
+h1 {
+    font-size: 50px;
+    margin-bottom: -50px;
+    background: -webkit-linear-gradient(#eee, #488fda);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .p-fieldset .p-fieldset-legend {
+    padding: 1rem 1.25rem;
+    border: 1px solid #dee2e6;
+    color: #ffffff !important;
+    background: #77aadf !important;
+    font-weight: 600;
+    border-radius: 4px;
+}
