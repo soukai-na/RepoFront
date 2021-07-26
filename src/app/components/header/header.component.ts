@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { TokenStorageService } from 'src/app/service/auth/token-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +9,9 @@ import { MenuItem } from 'primeng/api';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private token: TokenStorageService) { }
   items!: MenuItem[];
+  info: any;
 
   ngOnInit(){
     this.items = [
@@ -24,10 +26,23 @@ export class HeaderComponent implements OnInit {
             {
               label:'Logout',
               icon:'pi pi-fw pi-sign-out',
+              command: () => this.logout()
           },
     ]
   }
-]
+];
+
+this.info = {
+  token: this.token.getToken(),
+  username: this.token.getUsername(),
+  authorities: this.token.getAuthorities()
+};
 
 }
+
+logout() {
+  this.token.signOut();
+  window.location.reload();
+}
+
 }

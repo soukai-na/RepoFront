@@ -94,7 +94,7 @@ export class AbonnementComponent implements OnInit {
 
   deleteAbonnements() {
     if (this.abonnement == null || this.abonnement.id_abonnement == null) {
-      this.messageService.add({ severity: 'warn', summary: "Warning", detail: "séléctionnez une abonnement s'il vous plait!" });
+      this.messageService.add({ severity: 'warn', summary: "Warning", detail: "séléctionnez un abonnement s'il vous plait!" });
       return;
     }
     this.confirmService.confirm({

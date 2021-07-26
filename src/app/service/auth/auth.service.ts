@@ -1,0 +1,31 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AuthLoginInfo } from 'src/app/model/login-info';
+import { SignUpInfo } from 'src/app/model/signup-info';
+
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+
+  private loginUrl = 'http://localhost:5000/signin';
+  private signupUrl = 'http://localhost:5000/signup';
+
+  constructor(private http:HttpClient) { }
+
+  attemptAuth(credentials: AuthLoginInfo): Observable<any> {
+    return this.http.post(this.loginUrl, credentials, httpOptions);
+  }
+ 
+  signUp(info: SignUpInfo): Observable<any> {
+    return this.http.post(this.signupUrl, info, httpOptions);
+  }
+
+
+}

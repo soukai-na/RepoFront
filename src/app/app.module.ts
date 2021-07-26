@@ -21,9 +21,7 @@ import { MessageService } from 'primeng/api';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {InputNumberModule} from 'primeng/inputnumber';
-import { AuthComponent } from './components/auth/auth.component';
 import {PasswordModule} from 'primeng/password';
-import { LogoutComponent } from './components/logout/logout.component';
 import { ServiceMichocComponent } from './components/service-michoc/service-michoc.component';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import { MaterielComponent } from './components/materiel/materiel.component';
@@ -41,6 +39,11 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import {FieldsetModule} from 'primeng/fieldset';
+import { LoginComponent } from './components/login/login.component';
+import { UserComponent } from './components/user/user.component';
+import { AdminComponent } from './components/admin/admin.component';
+
+import { httpInterceptorProviders } from './service/auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -48,15 +51,16 @@ import {FieldsetModule} from 'primeng/fieldset';
     SubscriberComponent,
     MenuComponent,
     HeaderComponent,
-    AuthComponent,
-    LogoutComponent,
     ServiceMichocComponent,
     MaterielComponent,
     AbonnementComponent,
     FactureComponent,
     DashboardComponent,
     HistoriqueComponent,
-    AccueilComponent
+    AccueilComponent,
+    LoginComponent,
+    UserComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +92,8 @@ import {FieldsetModule} from 'primeng/fieldset';
   ],
   providers: [
     MessageService,
-    ConfirmationService
+    ConfirmationService,
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })

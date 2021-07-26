@@ -1,5 +1,5 @@
 
-<div style="display:flex;">
+<div *ngIf="authority === 'admin' || authority === 'user'" style="display:flex;">
     <div style=" margin-right: 0px; width: 370px;">
         <app-header></app-header>
         <app-menu></app-menu>
@@ -9,8 +9,10 @@
         <router-outlet> </router-outlet>
     </div>
 </div>
+
+<div *ngIf="!authority">
+    <app-login></app-login>
+</div>
 <!--footer>
     @Copyright--MICHOC
 </footer-->
-
-<!--app-auth></app-auth-->
