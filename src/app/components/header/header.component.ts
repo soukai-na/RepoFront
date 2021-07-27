@@ -20,10 +20,6 @@ export class HeaderComponent implements OnInit {
         icon:'pi pi-fw pi-user',
         items:[
             {
-                label:'Profile',
-                icon:'pi pi-fw pi-user',
-            },
-            {
               label:'Logout',
               icon:'pi pi-fw pi-sign-out',
               command: () => this.logout()

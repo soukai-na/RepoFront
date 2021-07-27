@@ -1,3 +1,16 @@
-<h4>Content from Server</h4>
-{{board}}
-{{errorMessage}}
+<div class="fg">
+<i class="pi pi-user" style="font-size: 6rem;color: #ffffff;background: #87cace;padding: 14px;border-radius: 60px;border-top-left-radius: 0px;"></i>
+<h1>Profile</h1>
+</div>
+<hr>
+<div>
+    <div *ngIf="info.token; ">
+        <h5 class="text-primary">Your Information</h5>
+        <p>
+          <strong>Username:</strong> {{info.username}}<br/>
+          <strong>Roles:</strong> {{info.authorities}}<br />
+        </p>
+        <button class="btn btn-secondary" (click)="logout()">Logout</button>
+      </div>
+
+</div>

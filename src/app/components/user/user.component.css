@@ -1,0 +1,11 @@
+.fg{
+    display: flex;
+}
+h1 {
+    margin-left: 20px;
+    font-size: 87px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: cursive;
+    color: #87cace;
+}

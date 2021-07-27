@@ -56,8 +56,6 @@ export class MaterielComponent implements OnInit {
     this.materielService.getSubscribers().subscribe(
       (data:any)=>{
         this.subscribers=data;
-        console.log(data);
-        console.log(data.id_abonnement);
       },
       error => {
         console.log(error);
@@ -96,10 +94,13 @@ export class MaterielComponent implements OnInit {
         let materiel = data as materiel;
         this.validerMateriel(materiel);
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'materiel affecté au subscriber ' });
-       
+       console.log(data);
         this.displayInfo = false;
+      },
+      error => {
+        console.log(error);
       }
-    )
+    );
   }
 
   displayMateriel(){
